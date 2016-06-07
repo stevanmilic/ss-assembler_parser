@@ -30,14 +30,17 @@ bool SymbolTableBuilder::resolveToken(Token* token)
 	case end_directive:
 		return false;
 		break;
-	case interrupt_instruction: 
-	case term_instruction: 
-	case io_instruction: 
-	case logical_instruction: 
-	case stack_instruction: 
-	case call_instruction: 
-	case move_instruction: 
+	case interrupt_instruction:
+	case term_instruction:
+	case io_instruction:
+	case logical_instruction:
+	case stack_instruction:
+	case call_instruction:
+	case move_instruction:
 	case load_instruction:
+		if (current_section != "text") {
+			return false;//throw error -> instruction not allowed in current section
+		}
 		resolveInstruction(token);
 		break;
 	default:
@@ -50,7 +53,7 @@ void SymbolTableBuilder::resolveLabel(Token *token)
 {
 	LabelToken* ltoken = dynamic_cast<LabelToken*>(token);
 	if (checkIfExists(ltoken->getName())) {
-		;//throws error
+		return;//throws error
 	}
 	symbols.push_back(new SymbolData(location_counter, ltoken->getLineNumber(), ltoken->getPosition(), ltoken->getName(), current_section, "local"));
 }
@@ -58,12 +61,13 @@ void SymbolTableBuilder::resolveLabel(Token *token)
 void SymbolTableBuilder::resolveSectionDirective(Token *token)
 {
 	SectionDirectiveToken* sdtoken = dynamic_cast<SectionDirectiveToken*>(token);
-	current_section = sdtoken->getSubSection().empty() ? sdtoken->getSection() : sdtoken->getSection() + "." + sdtoken->getSubSection();
+	std::string label = sdtoken->getSubSection().empty() ? "." + sdtoken->getSection() : "." + sdtoken->getSection() + "." + sdtoken->getSubSection();
 	location_counter = 0;
-	if (checkIfExists(current_section)) {
-		;//throws error
+	if (checkIfExists(label)) {
+		return;//throws error
 	}
-	symbols.push_back(new SymbolData(location_counter, sdtoken->getLineNumber(), sdtoken->getPosition(), current_section, current_section, "local"));
+	current_section = sdtoken->getSection();
+	symbols.push_back(new SymbolData(location_counter, sdtoken->getLineNumber(), sdtoken->getPosition(), label, current_section, "local"));
 }
 
 void SymbolTableBuilder::resolveTypeDirective(Token *token)
@@ -96,7 +100,6 @@ void SymbolTableBuilder::resolveAlignDirective(Token *token)
 			location_counter += bytes_to_align;
 		}
 	}
-
 }
 
 void SymbolTableBuilder::resolveInstruction(Token *token)

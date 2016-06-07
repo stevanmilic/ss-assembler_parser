@@ -47,9 +47,9 @@ AlignDirectiveToken::AlignDirectiveToken(int line_number, const boost::match_res
 		;//throw error -> too much params
 	}
 	if (params.size() == 1) {
-		fill = std::stoi(params[0], 0, 0);
+		fill = (char)std::stoi(params[0], 0, 0);
 	} else if (params.size() == 2) {
-		fill = std::stoi(params[0], 0, 0);
+		fill = (char)std::stoi(params[0], 0, 0);
 		max = std::stoi(params[1], 0, 0);
 	}
 }
@@ -69,7 +69,7 @@ SkipDirectiveToken::SkipDirectiveToken(int line_number, const boost::match_resul
 		;//throw error too much arguments
 	}
 	if (params.size() == 1) {
-		fill = std::stoi(params[0], 0, 0);
+		fill = (char)std::stoi(params[0], 0, 0);
 	}
 }
 

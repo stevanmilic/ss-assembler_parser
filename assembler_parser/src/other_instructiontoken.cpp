@@ -16,7 +16,10 @@ InterruptInstructionToken::InterruptInstructionToken(int line_number, const boos
 	if (content[2].str().empty()) {
 		return;//throw error -> not enough params
 	}
-	src = content[2].str();
+	src = (char)std::stoi(content[2].str(), 0, 0);
+	if(src < 0 || src > 15){
+		return;//throw error interrupt must be number between 0 and 15
+	}
 	std::vector<std::string> params = LineManipulation::split(content[3].str(), ',');
 	if (params.size() >= 1) {
 		return;//throw error wrong number of parametars
@@ -71,6 +74,7 @@ std::string TermInstructionToken::getOC() const
 	} else if (!name.compare(0, 3, "cmp")) {
 		return "0101";
 	}
+	return "";
 }
 
 LogicalInstructionToken::LogicalInstructionToken(int line_number, const boost::match_results<std::string::const_iterator>& content) : InstructionToken(line_number, content)
@@ -102,6 +106,7 @@ std::string LogicalInstructionToken::getOC() const
 	} else if (!name.compare(0, 4, "test")) {
 		return "1001";
 	}
+	return "";
 }
 
 StackInstructionToken::StackInstructionToken(int line_number, const boost::match_results<std::string::const_iterator>& content) : InstructionToken(line_number, content)
@@ -116,7 +121,7 @@ StackInstructionToken::StackInstructionToken(int line_number, const boost::match
 	}
 	r = params[0];
 	imm = params.size() == 2 ? params[1] : 0;
-	ls = !name.compare(0, 3, "str") ? "0" : "1"; 
+	ls = !name.compare(0, 3, "str") ? "0" : "1";
 }
 
 std::string StackInstructionToken::getFlag() const

@@ -72,6 +72,8 @@ flags = [
 '-I',
 '.',
 '-I',
+'../exprtk/',
+'-I',
 './include',
 '-I',
 './src',

@@ -21,24 +21,26 @@ directivetoken.h
 ../assembler_parser/include/directivetoken.h
 instructiontoken.h
 ../assembler_parser/include/instructiontoken.h
+symboltablebuilder.h
+../assembler_parser/include/symboltablebuilder.h
 
 ../assembler_parser/include/asmparserfirstpass.h
 asmparser.h
 ../assembler_parser/include/asmparser.h
-symboltablebuilder.h
-../assembler_parser/include/symboltablebuilder.h
 
 ../assembler_parser/include/asmparsersecondpass.h
 asmparser.h
 ../assembler_parser/include/asmparser.h
-contenttablebuilder.h
-../assembler_parser/include/contenttablebuilder.h
-exprtk.hpp
--
+compositetablebuilder.h
+../assembler_parser/include/compositetablebuilder.h
 
-../assembler_parser/include/contenttablebuilder.h
+../assembler_parser/include/compositetablebuilder.h
 tablebuilder.h
 ../assembler_parser/include/tablebuilder.h
+sectioncontenttablebuilder.h
+../assembler_parser/include/sectioncontenttablebuilder.h
+symboldata.h
+../assembler_parser/include/symboldata.h
 
 ../assembler_parser/include/data.h
 string
@@ -76,17 +78,23 @@ locale
 data.h
 ../assembler_parser/include/data.h
 
-../assembler_parser/include/relocationcontenttablebuilder.h
-contenttablebuilder.h
-../assembler_parser/include/contenttablebuilder.h
-reloactiondata.h
-../assembler_parser/include/reloactiondata.h
-
 ../assembler_parser/include/sectioncontenttablebuilder.h
-contenttablebuilder.h
-../assembler_parser/include/contenttablebuilder.h
+tablebuilder.h
+../assembler_parser/include/tablebuilder.h
 sectiondata.h
 ../assembler_parser/include/sectiondata.h
+symboldata.h
+../assembler_parser/include/symboldata.h
+reloactiondata.h
+../assembler_parser/include/reloactiondata.h
+exprtk.hpp
+-
+iomanip
+-
+bitset
+-
+boost/regex.hpp
+-
 
 ../assembler_parser/include/sectiondata.h
 data.h
@@ -4552,25 +4560,13 @@ boost/core/enable_if.hpp
 
 ../regex/include/boost/version.hpp
 
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparser.cpp
-asmparser.h
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparser.h
-
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparserfirstpass.cpp
-asmparserfirstpass.h
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparserfirstpass.h
-
 /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparsersecondpass.cpp
 asmparsersecondpass.h
 /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparsersecondpass.h
 
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/contenttablebuilder.cpp
-contenttablebuilder.h
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/contenttablebuilder.h
-
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/instructiontoken.cpp
-instructiontoken.h
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/instructiontoken.h
+/home/stevan/etf/sistSoft/projekat/assembler_parser/src/compositetablebuilder.cpp
+compositetablebuilder.h
+/home/stevan/etf/sistSoft/projekat/assembler_parser/src/compositetablebuilder.h
 
 /home/stevan/etf/sistSoft/projekat/assembler_parser/src/main.cpp
 iostream
@@ -4582,27 +4578,11 @@ asmparserfirstpass.h
 asmparsersecondpass.h
 /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparsersecondpass.h
 
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_directivetoken.cpp
-directivetoken.h
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/directivetoken.h
-
 /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_instructiontoken.cpp
 instructiontoken.h
 /home/stevan/etf/sistSoft/projekat/assembler_parser/src/instructiontoken.h
 
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/relocationcontenttablebuilder.cpp
-relocationcontenttablebuilder.h
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/relocationcontenttablebuilder.h
-
 /home/stevan/etf/sistSoft/projekat/assembler_parser/src/sectioncontenttablebuilder.cpp
 sectioncontenttablebuilder.h
 /home/stevan/etf/sistSoft/projekat/assembler_parser/src/sectioncontenttablebuilder.h
-
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/symboltablebuilder.cpp
-symboltablebuilder.h
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/symboltablebuilder.h
-
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/tablebuilder.cpp
-tablebuilder.h
-/home/stevan/etf/sistSoft/projekat/assembler_parser/src/tablebuilder.h
 

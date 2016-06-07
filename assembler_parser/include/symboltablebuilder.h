@@ -11,17 +11,18 @@ public:
 	bool resolveToken(Token* token);
 	std::vector<SymbolData*>& getSymbols();
 	std::ostream& dump(std::ostream& o) const;
-private:
-	bool checkIfExists(std::string label) const;
-	void resolveLabel(Token *token);
+protected:
 	void resolveSectionDirective(Token *token);
 	void resolveSkipDirective(Token *token);
 	void resolveAlignDirective(Token *token);
 	void resolveTypeDirective(Token *token);
 	void resolveInstruction(Token *token);
+private:
+	bool checkIfExists(std::string label) const;
+	void resolveLabel(Token *token);
 	std::vector<SymbolData*> symbols;
-	int location_counter;
 	std::string current_section;
+	int location_counter;
 };
 
 #endif //_SYMBOLTABLEBUILDER_H

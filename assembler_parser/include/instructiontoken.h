@@ -31,12 +31,12 @@ public:
 	}
 	std::string getFlag() const;
 	std::string getOC() const;
-	std::string getSrc() const
+	char getSrc() const
 	{
 		return src;
 	}
 protected:
-	std::string src;
+	char src;
 };
 
 class TermInstructionToken: public InstructionToken

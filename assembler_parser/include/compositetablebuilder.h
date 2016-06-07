@@ -1,26 +1,25 @@
 #ifndef _COMPOSITETABLEBUILDER_H
 #define _COMPOSITETABLEBUILDER_H
 
-#include "contenttablebuilder.h"
-#include "relocationcontenttablebuilder.h"
+#include "tablebuilder.h"
 #include "sectioncontenttablebuilder.h"
+#include "symboldata.h"
 
-class CompositeTableBuilder: public ContentTableBuilder
+class CompositeTableBuilder: public TableBuilder
 {
 public:
 	CompositeTableBuilder(std::vector<SymbolData*>& symbols);
-	bool resolveToken(Token* t);
+	bool resolveToken(Token* token);
 	std::ostream& dump(std::ostream& o) const;
 	std::vector<SymbolData*>& getSymbols();
+protected:
+	void resolveTypeDirective(Token *token);
+	void resolveSectionDirective(Token *token);
+	void resolveIODirective(Token *token);
 private:
-	struct SectionTable{
-		std::string name;
-		int location_counter;
-		SectionContentTableBuilder* section_content;
-		RelocationContentTableBuilder* relocation_content;
-		SectionTable(std:: string , int, SectionContentTableBuilder*, RelocationContentTableBuilder*);
-	};
-	std::list<SectionTable*> section_tables;
+	bool labelGoPublic(std::string label);
+	SectionContentTableBuilder* current_section;
+	std::list<SectionContentTableBuilder*> sections;
 	std::vector<SymbolData*> symbols;
 };
 

@@ -53,15 +53,15 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.o: CMakeFiles/as
 CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.o: ../assembler_parser/src/tablebuilder.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/tablebuilder.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/tablebuilder.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/tablebuilder.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/tablebuilder.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/tablebuilder.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/tablebuilder.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.o.requires
@@ -76,15 +76,15 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.o:
 CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.o: ../assembler_parser/src/sectioncontenttablebuilder.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/sectioncontenttablebuilder.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/sectioncontenttablebuilder.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/sectioncontenttablebuilder.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/sectioncontenttablebuilder.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/sectioncontenttablebuilder.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/sectioncontenttablebuilder.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.o.requires
@@ -99,15 +99,15 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.o: CMake
 CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.o: ../assembler_parser/src/other_directivetoken.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_directivetoken.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_directivetoken.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_directivetoken.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_directivetoken.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_directivetoken.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_directivetoken.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.o.requires
@@ -122,15 +122,15 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o: CMakeFiles/asm_parser
 CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o: ../assembler_parser/src/data.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/data.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/data.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/data.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/data.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/data.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/data.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o.requires
@@ -141,19 +141,42 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o.provides: CMakeFiles/a
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o.provides.build: CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o
 
+CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o: CMakeFiles/asm_parser.dir/flags.make
+CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o: ../assembler_parser/src/compositetablebuilder.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/compositetablebuilder.cpp
+
+CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/compositetablebuilder.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.i
+
+CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/compositetablebuilder.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.s
+
+CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o.requires:
+.PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o.requires
+
+CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o.provides: CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o.requires
+	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o.provides.build
+.PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o.provides
+
+CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o.provides.build: CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o
+
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.o: CMakeFiles/asm_parser.dir/flags.make
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.o: ../assembler_parser/src/asmparserfirstpass.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparserfirstpass.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparserfirstpass.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparserfirstpass.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparserfirstpass.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparserfirstpass.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparserfirstpass.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.o.requires
@@ -166,17 +189,17 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.o.provides
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.o: CMakeFiles/asm_parser.dir/flags.make
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.o: ../assembler_parser/src/asmparsersecondpass.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparsersecondpass.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparsersecondpass.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparsersecondpass.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparsersecondpass.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparsersecondpass.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparsersecondpass.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.o.requires
@@ -189,17 +212,17 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.o.provide
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o: CMakeFiles/asm_parser.dir/flags.make
 CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o: ../assembler_parser/src/main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/main.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/main.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/main.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/main.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/main.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/main.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o.requires
@@ -210,65 +233,19 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o.provides: CMakeFiles/a
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o.provides.build: CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o
 
-CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o: CMakeFiles/asm_parser.dir/flags.make
-CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o: ../assembler_parser/src/relocationcontenttablebuilder.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_8)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/relocationcontenttablebuilder.cpp
-
-CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/relocationcontenttablebuilder.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.i
-
-CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/relocationcontenttablebuilder.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.s
-
-CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o.requires:
-.PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o.requires
-
-CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o.provides: CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o.requires
-	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o.provides.build
-.PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o.provides
-
-CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o.provides.build: CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o
-
-CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o: CMakeFiles/asm_parser.dir/flags.make
-CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o: ../assembler_parser/src/contenttablebuilder.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_9)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/contenttablebuilder.cpp
-
-CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/contenttablebuilder.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.i
-
-CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/contenttablebuilder.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.s
-
-CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o.requires:
-.PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o.requires
-
-CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o.provides: CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o.requires
-	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o.provides.build
-.PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o.provides
-
-CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o.provides.build: CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o
-
 CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.o: CMakeFiles/asm_parser.dir/flags.make
 CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.o: ../assembler_parser/src/labeltoken.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/labeltoken.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/labeltoken.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/labeltoken.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/labeltoken.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/labeltoken.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/labeltoken.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.o.requires
@@ -281,17 +258,17 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.o.provides.build: 
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.o: CMakeFiles/asm_parser.dir/flags.make
 CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.o: ../assembler_parser/src/linemanipulation.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/linemanipulation.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/linemanipulation.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/linemanipulation.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/linemanipulation.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/linemanipulation.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/linemanipulation.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.o.requires
@@ -304,17 +281,17 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.o.provides.b
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.o: CMakeFiles/asm_parser.dir/flags.make
 CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.o: ../assembler_parser/src/other_instructiontoken.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_instructiontoken.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_instructiontoken.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_instructiontoken.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_instructiontoken.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_instructiontoken.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_instructiontoken.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.o.requires
@@ -327,17 +304,17 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.o.prov
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.o: CMakeFiles/asm_parser.dir/flags.make
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.o: ../assembler_parser/src/asmparser.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparser.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparser.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparser.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparser.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparser.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparser.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.o.requires
@@ -350,17 +327,17 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.o.provides.build: C
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.o: CMakeFiles/asm_parser.dir/flags.make
 CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.o: ../assembler_parser/src/directivetoken.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/directivetoken.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/directivetoken.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/directivetoken.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/directivetoken.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/directivetoken.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/directivetoken.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.o.requires
@@ -373,17 +350,17 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/directivetoken.cpp.o.provides.bui
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.o: CMakeFiles/asm_parser.dir/flags.make
 CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.o: ../assembler_parser/src/token.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/token.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/token.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/token.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/token.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/token.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/token.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.o.requires
@@ -396,17 +373,17 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/token.cpp.o.provides.build: CMake
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.o: CMakeFiles/asm_parser.dir/flags.make
 CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.o: ../assembler_parser/src/symboltablebuilder.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/symboltablebuilder.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/symboltablebuilder.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/symboltablebuilder.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/symboltablebuilder.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/symboltablebuilder.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/symboltablebuilder.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.o.requires
@@ -419,17 +396,17 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/symboltablebuilder.cpp.o.provides
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.o: CMakeFiles/asm_parser.dir/flags.make
 CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.o: ../assembler_parser/src/instructiontoken.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/stevan/etf/sistSoft/projekat/build/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.o"
-	/usr/bin/g++-4.6   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/instructiontoken.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.o -c /home/stevan/etf/sistSoft/projekat/assembler_parser/src/instructiontoken.cpp
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.i"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/instructiontoken.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/stevan/etf/sistSoft/projekat/assembler_parser/src/instructiontoken.cpp > CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.i
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.s"
-	/usr/bin/g++-4.6  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/instructiontoken.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/stevan/etf/sistSoft/projekat/assembler_parser/src/instructiontoken.cpp -o CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.s
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.o.requires:
 .PHONY : CMakeFiles/asm_parser.dir/assembler_parser/src/instructiontoken.cpp.o.requires
@@ -446,11 +423,10 @@ asm_parser_OBJECTS = \
 "CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.o" \
 "CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.o" \
 "CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o" \
+"CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o" \
 "CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.o" \
 "CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.o" \
 "CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o" \
-"CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o" \
-"CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o" \
 "CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.o" \
 "CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.o" \
 "CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.o" \
@@ -467,11 +443,10 @@ asm_parser: CMakeFiles/asm_parser.dir/assembler_parser/src/tablebuilder.cpp.o
 asm_parser: CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.o
 asm_parser: CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.o
 asm_parser: CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o
+asm_parser: CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o
 asm_parser: CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.o
 asm_parser: CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.o
 asm_parser: CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o
-asm_parser: CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o
-asm_parser: CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o
 asm_parser: CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.o
 asm_parser: CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.o
 asm_parser: CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.o
@@ -493,11 +468,10 @@ CMakeFiles/asm_parser.dir/requires: CMakeFiles/asm_parser.dir/assembler_parser/s
 CMakeFiles/asm_parser.dir/requires: CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.o.requires
 CMakeFiles/asm_parser.dir/requires: CMakeFiles/asm_parser.dir/assembler_parser/src/other_directivetoken.cpp.o.requires
 CMakeFiles/asm_parser.dir/requires: CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o.requires
+CMakeFiles/asm_parser.dir/requires: CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o.requires
 CMakeFiles/asm_parser.dir/requires: CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.o.requires
 CMakeFiles/asm_parser.dir/requires: CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.o.requires
 CMakeFiles/asm_parser.dir/requires: CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o.requires
-CMakeFiles/asm_parser.dir/requires: CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o.requires
-CMakeFiles/asm_parser.dir/requires: CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o.requires
 CMakeFiles/asm_parser.dir/requires: CMakeFiles/asm_parser.dir/assembler_parser/src/labeltoken.cpp.o.requires
 CMakeFiles/asm_parser.dir/requires: CMakeFiles/asm_parser.dir/assembler_parser/src/linemanipulation.cpp.o.requires
 CMakeFiles/asm_parser.dir/requires: CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.o.requires

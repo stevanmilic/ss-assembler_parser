@@ -6,7 +6,7 @@ std::vector<std::string>& LineManipulation::split(const std::string &s, char del
 	std::string item;
 	while (std::getline(ss, item, delim)) {
 		if(!item.empty())
-			elems.push_back(item);
+			elems.push_back(LineManipulation::trim(item));
 	}
 	return elems;
 }

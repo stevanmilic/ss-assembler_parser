@@ -183,29 +183,29 @@ assembler_parser/src/asmparsersecondpass.cpp.s:
 	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.s
 .PHONY : assembler_parser/src/asmparsersecondpass.cpp.s
 
-assembler_parser/src/contenttablebuilder.o: assembler_parser/src/contenttablebuilder.cpp.o
-.PHONY : assembler_parser/src/contenttablebuilder.o
+assembler_parser/src/compositetablebuilder.o: assembler_parser/src/compositetablebuilder.cpp.o
+.PHONY : assembler_parser/src/compositetablebuilder.o
 
 # target to build an object file
-assembler_parser/src/contenttablebuilder.cpp.o:
-	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o
-.PHONY : assembler_parser/src/contenttablebuilder.cpp.o
+assembler_parser/src/compositetablebuilder.cpp.o:
+	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o
+.PHONY : assembler_parser/src/compositetablebuilder.cpp.o
 
-assembler_parser/src/contenttablebuilder.i: assembler_parser/src/contenttablebuilder.cpp.i
-.PHONY : assembler_parser/src/contenttablebuilder.i
+assembler_parser/src/compositetablebuilder.i: assembler_parser/src/compositetablebuilder.cpp.i
+.PHONY : assembler_parser/src/compositetablebuilder.i
 
 # target to preprocess a source file
-assembler_parser/src/contenttablebuilder.cpp.i:
-	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.i
-.PHONY : assembler_parser/src/contenttablebuilder.cpp.i
+assembler_parser/src/compositetablebuilder.cpp.i:
+	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.i
+.PHONY : assembler_parser/src/compositetablebuilder.cpp.i
 
-assembler_parser/src/contenttablebuilder.s: assembler_parser/src/contenttablebuilder.cpp.s
-.PHONY : assembler_parser/src/contenttablebuilder.s
+assembler_parser/src/compositetablebuilder.s: assembler_parser/src/compositetablebuilder.cpp.s
+.PHONY : assembler_parser/src/compositetablebuilder.s
 
 # target to generate assembly for a file
-assembler_parser/src/contenttablebuilder.cpp.s:
-	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.s
-.PHONY : assembler_parser/src/contenttablebuilder.cpp.s
+assembler_parser/src/compositetablebuilder.cpp.s:
+	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.s
+.PHONY : assembler_parser/src/compositetablebuilder.cpp.s
 
 assembler_parser/src/data.o: assembler_parser/src/data.cpp.o
 .PHONY : assembler_parser/src/data.o
@@ -399,30 +399,6 @@ assembler_parser/src/other_instructiontoken.cpp.s:
 	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.s
 .PHONY : assembler_parser/src/other_instructiontoken.cpp.s
 
-assembler_parser/src/relocationcontenttablebuilder.o: assembler_parser/src/relocationcontenttablebuilder.cpp.o
-.PHONY : assembler_parser/src/relocationcontenttablebuilder.o
-
-# target to build an object file
-assembler_parser/src/relocationcontenttablebuilder.cpp.o:
-	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o
-.PHONY : assembler_parser/src/relocationcontenttablebuilder.cpp.o
-
-assembler_parser/src/relocationcontenttablebuilder.i: assembler_parser/src/relocationcontenttablebuilder.cpp.i
-.PHONY : assembler_parser/src/relocationcontenttablebuilder.i
-
-# target to preprocess a source file
-assembler_parser/src/relocationcontenttablebuilder.cpp.i:
-	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.i
-.PHONY : assembler_parser/src/relocationcontenttablebuilder.cpp.i
-
-assembler_parser/src/relocationcontenttablebuilder.s: assembler_parser/src/relocationcontenttablebuilder.cpp.s
-.PHONY : assembler_parser/src/relocationcontenttablebuilder.s
-
-# target to generate assembly for a file
-assembler_parser/src/relocationcontenttablebuilder.cpp.s:
-	$(MAKE) -f CMakeFiles/asm_parser.dir/build.make CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.s
-.PHONY : assembler_parser/src/relocationcontenttablebuilder.cpp.s
-
 assembler_parser/src/sectioncontenttablebuilder.o: assembler_parser/src/sectioncontenttablebuilder.cpp.o
 .PHONY : assembler_parser/src/sectioncontenttablebuilder.o
 
@@ -537,9 +513,9 @@ help:
 	@echo "... assembler_parser/src/asmparsersecondpass.o"
 	@echo "... assembler_parser/src/asmparsersecondpass.i"
 	@echo "... assembler_parser/src/asmparsersecondpass.s"
-	@echo "... assembler_parser/src/contenttablebuilder.o"
-	@echo "... assembler_parser/src/contenttablebuilder.i"
-	@echo "... assembler_parser/src/contenttablebuilder.s"
+	@echo "... assembler_parser/src/compositetablebuilder.o"
+	@echo "... assembler_parser/src/compositetablebuilder.i"
+	@echo "... assembler_parser/src/compositetablebuilder.s"
 	@echo "... assembler_parser/src/data.o"
 	@echo "... assembler_parser/src/data.i"
 	@echo "... assembler_parser/src/data.s"
@@ -564,9 +540,6 @@ help:
 	@echo "... assembler_parser/src/other_instructiontoken.o"
 	@echo "... assembler_parser/src/other_instructiontoken.i"
 	@echo "... assembler_parser/src/other_instructiontoken.s"
-	@echo "... assembler_parser/src/relocationcontenttablebuilder.o"
-	@echo "... assembler_parser/src/relocationcontenttablebuilder.i"
-	@echo "... assembler_parser/src/relocationcontenttablebuilder.s"
 	@echo "... assembler_parser/src/sectioncontenttablebuilder.o"
 	@echo "... assembler_parser/src/sectioncontenttablebuilder.i"
 	@echo "... assembler_parser/src/sectioncontenttablebuilder.s"

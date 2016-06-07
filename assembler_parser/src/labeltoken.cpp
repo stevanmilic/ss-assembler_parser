@@ -4,7 +4,7 @@
  * LabelToken implementation
  */
 
-const boost::regex LabelToken::pattern("([a-zA-z0-9]+):");
+const boost::regex LabelToken::pattern("([a-zA-Z0-9]+):");
 
 
 LabelToken::LabelToken(int line_number, const boost::match_results<std::string::const_iterator>& content) : Token(line_number, content)

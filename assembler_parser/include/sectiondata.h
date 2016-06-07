@@ -16,6 +16,7 @@ public:
 	std::ostream& dump(std::ostream& o) const
 	{
 		o << "| " << offset << " | " << content << " |\n";
+		return o;
 	}
 };
 

@@ -77,7 +77,7 @@ public:
 	{
 		return alignment;
 	}
-	int getFill() const
+	char getFill() const
 	{
 		return fill;
 	}
@@ -86,7 +86,8 @@ public:
 		return max;
 	}
 protected:
-	int alignment, fill, max;
+	int alignment,  max;
+	char fill;
 };
 
 class SkipDirectiveToken: public DirectiveToken
@@ -101,12 +102,13 @@ public:
 	{
 		return size;
 	}
-	int getFill() const
+	char getFill() const
 	{
 		return fill;
 	}
 protected:
-	int size, fill;
+	int size;
+	char fill;
 };
 
 class EndDirectiveToken: public DirectiveToken

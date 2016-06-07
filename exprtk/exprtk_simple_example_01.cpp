@@ -24,33 +24,33 @@
 template <typename T>
 void trig_function()
 {
-   typedef exprtk::symbol_table<T> symbol_table_t;
-   typedef exprtk::expression<T>     expression_t;
-   typedef exprtk::parser<T>             parser_t;
+	typedef exprtk::symbol_table<T> symbol_table_t;
+	typedef exprtk::expression<T>     expression_t;
+	typedef exprtk::parser<T>             parser_t;
 
-   std::string expression_string = "clamp(-1.0,sin(2 * pi * x) + cos(x / 2 * pi),+1.0)";
+	std::string expression_string = "main + 2 + gsda";
 
-   T x;
+	symbol_table_t symbol_table;
 
-   symbol_table_t symbol_table;
-   symbol_table.add_variable("x",x);
-   symbol_table.add_constants();
+	expression_t expression;
+	expression.register_symbol_table(symbol_table);
 
-   expression_t expression;
-   expression.register_symbol_table(symbol_table);
+	parser_t parser;
+	if (!parser.compile(expression_string, expression)) {
 
-   parser_t parser;
-   parser.compile(expression_string,expression);
+		printf("Error: %s\n", parser.error().c_str());
+		symbol_table.add_constant("main",3);
+		parser.compile(expression_string, expression);
+		printf("Error: %s\n", parser.error().c_str());
 
-   for (x = T(-5); x <= T(+5); x += T(0.001))
-   {
-      T y = expression.value();
-      printf("%19.15f\t%19.15f\n",x,y);
-   }
+	}
+	double result = expression.value();
+
+	printf("Result: %10.5f\n", result);
 }
 
 int main()
 {
-   trig_function<double>();
-   return 0;
+	trig_function<double>();
+	return 0;
 }

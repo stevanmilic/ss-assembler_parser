@@ -3,10 +3,14 @@
 
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparser.cpp.o
  ../assembler_parser/include/asmparser.h
+ ../assembler_parser/include/data.h
  ../assembler_parser/include/directivetoken.h
  ../assembler_parser/include/instructiontoken.h
  ../assembler_parser/include/labeltoken.h
  ../assembler_parser/include/linemanipulation.h
+ ../assembler_parser/include/symboldata.h
+ ../assembler_parser/include/symboltablebuilder.h
+ ../assembler_parser/include/tablebuilder.h
  ../assembler_parser/include/token.h
  ../regex/include/boost/assert.hpp
  ../regex/include/boost/checked_delete.hpp
@@ -997,12 +1001,17 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/asmparserfirstpass.cpp.o
 CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.o
  ../assembler_parser/include/asmparser.h
  ../assembler_parser/include/asmparsersecondpass.h
- ../assembler_parser/include/contenttablebuilder.h
+ ../assembler_parser/include/compositetablebuilder.h
  ../assembler_parser/include/data.h
  ../assembler_parser/include/directivetoken.h
  ../assembler_parser/include/instructiontoken.h
  ../assembler_parser/include/labeltoken.h
  ../assembler_parser/include/linemanipulation.h
+ ../assembler_parser/include/reloactiondata.h
+ ../assembler_parser/include/sectioncontenttablebuilder.h
+ ../assembler_parser/include/sectiondata.h
+ ../assembler_parser/include/symboldata.h
+ ../assembler_parser/include/symboltablebuilder.h
  ../assembler_parser/include/tablebuilder.h
  ../assembler_parser/include/token.h
  ../exprtk/exprtk.hpp
@@ -1493,15 +1502,20 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/asmparsersecondpass.cpp.o
  ../regex/include/boost/utility/enable_if.hpp
  ../regex/include/boost/version.hpp
  /home/stevan/etf/sistSoft/projekat/assembler_parser/src/asmparsersecondpass.cpp
-CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o
- ../assembler_parser/include/contenttablebuilder.h
+CMakeFiles/asm_parser.dir/assembler_parser/src/compositetablebuilder.cpp.o
+ ../assembler_parser/include/compositetablebuilder.h
  ../assembler_parser/include/data.h
  ../assembler_parser/include/directivetoken.h
  ../assembler_parser/include/instructiontoken.h
  ../assembler_parser/include/labeltoken.h
  ../assembler_parser/include/linemanipulation.h
+ ../assembler_parser/include/reloactiondata.h
+ ../assembler_parser/include/sectioncontenttablebuilder.h
+ ../assembler_parser/include/sectiondata.h
+ ../assembler_parser/include/symboldata.h
  ../assembler_parser/include/tablebuilder.h
  ../assembler_parser/include/token.h
+ ../exprtk/exprtk.hpp
  ../regex/include/boost/assert.hpp
  ../regex/include/boost/checked_delete.hpp
  ../regex/include/boost/config.hpp
@@ -1988,7 +2002,7 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/contenttablebuilder.cpp.o
  ../regex/include/boost/utility/addressof.hpp
  ../regex/include/boost/utility/enable_if.hpp
  ../regex/include/boost/version.hpp
- /home/stevan/etf/sistSoft/projekat/assembler_parser/src/contenttablebuilder.cpp
+ /home/stevan/etf/sistSoft/projekat/assembler_parser/src/compositetablebuilder.cpp
 CMakeFiles/asm_parser.dir/assembler_parser/src/data.cpp.o
  ../assembler_parser/include/data.h
  /home/stevan/etf/sistSoft/projekat/assembler_parser/src/data.cpp
@@ -3472,12 +3486,15 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/main.cpp.o
  ../assembler_parser/include/asmparser.h
  ../assembler_parser/include/asmparserfirstpass.h
  ../assembler_parser/include/asmparsersecondpass.h
- ../assembler_parser/include/contenttablebuilder.h
+ ../assembler_parser/include/compositetablebuilder.h
  ../assembler_parser/include/data.h
  ../assembler_parser/include/directivetoken.h
  ../assembler_parser/include/instructiontoken.h
  ../assembler_parser/include/labeltoken.h
  ../assembler_parser/include/linemanipulation.h
+ ../assembler_parser/include/reloactiondata.h
+ ../assembler_parser/include/sectioncontenttablebuilder.h
+ ../assembler_parser/include/sectiondata.h
  ../assembler_parser/include/symboldata.h
  ../assembler_parser/include/symboltablebuilder.h
  ../assembler_parser/include/tablebuilder.h
@@ -4952,515 +4969,19 @@ CMakeFiles/asm_parser.dir/assembler_parser/src/other_instructiontoken.cpp.o
  ../regex/include/boost/utility/enable_if.hpp
  ../regex/include/boost/version.hpp
  /home/stevan/etf/sistSoft/projekat/assembler_parser/src/other_instructiontoken.cpp
-CMakeFiles/asm_parser.dir/assembler_parser/src/relocationcontenttablebuilder.cpp.o
- ../assembler_parser/include/contenttablebuilder.h
+CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.o
  ../assembler_parser/include/data.h
  ../assembler_parser/include/directivetoken.h
  ../assembler_parser/include/instructiontoken.h
  ../assembler_parser/include/labeltoken.h
  ../assembler_parser/include/linemanipulation.h
  ../assembler_parser/include/reloactiondata.h
- ../assembler_parser/include/relocationcontenttablebuilder.h
- ../assembler_parser/include/tablebuilder.h
- ../assembler_parser/include/token.h
- ../regex/include/boost/assert.hpp
- ../regex/include/boost/checked_delete.hpp
- ../regex/include/boost/config.hpp
- ../regex/include/boost/config/auto_link.hpp
- ../regex/include/boost/config/compiler/borland.hpp
- ../regex/include/boost/config/compiler/clang.hpp
- ../regex/include/boost/config/compiler/codegear.hpp
- ../regex/include/boost/config/compiler/comeau.hpp
- ../regex/include/boost/config/compiler/common_edg.hpp
- ../regex/include/boost/config/compiler/compaq_cxx.hpp
- ../regex/include/boost/config/compiler/cray.hpp
- ../regex/include/boost/config/compiler/digitalmars.hpp
- ../regex/include/boost/config/compiler/gcc.hpp
- ../regex/include/boost/config/compiler/gcc_xml.hpp
- ../regex/include/boost/config/compiler/greenhills.hpp
- ../regex/include/boost/config/compiler/hp_acc.hpp
- ../regex/include/boost/config/compiler/intel.hpp
- ../regex/include/boost/config/compiler/kai.hpp
- ../regex/include/boost/config/compiler/metrowerks.hpp
- ../regex/include/boost/config/compiler/mpw.hpp
- ../regex/include/boost/config/compiler/nvcc.hpp
- ../regex/include/boost/config/compiler/pathscale.hpp
- ../regex/include/boost/config/compiler/pgi.hpp
- ../regex/include/boost/config/compiler/sgi_mipspro.hpp
- ../regex/include/boost/config/compiler/sunpro_cc.hpp
- ../regex/include/boost/config/compiler/vacpp.hpp
- ../regex/include/boost/config/compiler/visualc.hpp
- ../regex/include/boost/config/no_tr1/cmath.hpp
- ../regex/include/boost/config/no_tr1/memory.hpp
- ../regex/include/boost/config/no_tr1/utility.hpp
- ../regex/include/boost/config/platform/aix.hpp
- ../regex/include/boost/config/platform/amigaos.hpp
- ../regex/include/boost/config/platform/beos.hpp
- ../regex/include/boost/config/platform/bsd.hpp
- ../regex/include/boost/config/platform/cray.hpp
- ../regex/include/boost/config/platform/cygwin.hpp
- ../regex/include/boost/config/platform/hpux.hpp
- ../regex/include/boost/config/platform/irix.hpp
- ../regex/include/boost/config/platform/linux.hpp
- ../regex/include/boost/config/platform/macos.hpp
- ../regex/include/boost/config/platform/qnxnto.hpp
- ../regex/include/boost/config/platform/solaris.hpp
- ../regex/include/boost/config/platform/symbian.hpp
- ../regex/include/boost/config/platform/vms.hpp
- ../regex/include/boost/config/platform/vxworks.hpp
- ../regex/include/boost/config/platform/win32.hpp
- ../regex/include/boost/config/posix_features.hpp
- ../regex/include/boost/config/select_compiler_config.hpp
- ../regex/include/boost/config/select_platform_config.hpp
- ../regex/include/boost/config/select_stdlib_config.hpp
- ../regex/include/boost/config/stdlib/dinkumware.hpp
- ../regex/include/boost/config/stdlib/libcomo.hpp
- ../regex/include/boost/config/stdlib/libcpp.hpp
- ../regex/include/boost/config/stdlib/libstdcpp3.hpp
- ../regex/include/boost/config/stdlib/modena.hpp
- ../regex/include/boost/config/stdlib/msl.hpp
- ../regex/include/boost/config/stdlib/roguewave.hpp
- ../regex/include/boost/config/stdlib/sgi.hpp
- ../regex/include/boost/config/stdlib/stlport.hpp
- ../regex/include/boost/config/stdlib/vacpp.hpp
- ../regex/include/boost/config/suffix.hpp
- ../regex/include/boost/config/user.hpp
- ../regex/include/boost/core/addressof.hpp
- ../regex/include/boost/core/checked_delete.hpp
- ../regex/include/boost/core/demangle.hpp
- ../regex/include/boost/core/enable_if.hpp
- ../regex/include/boost/core/ref.hpp
- ../regex/include/boost/core/typeinfo.hpp
- ../regex/include/boost/cstdint.hpp
- ../regex/include/boost/current_function.hpp
- ../regex/include/boost/detail/container_fwd.hpp
- ../regex/include/boost/detail/sp_typeinfo.hpp
- ../regex/include/boost/detail/workaround.hpp
- ../regex/include/boost/exception/exception.hpp
- ../regex/include/boost/functional/hash.hpp
- ../regex/include/boost/functional/hash/detail/float_functions.hpp
- ../regex/include/boost/functional/hash/detail/hash_float.hpp
- ../regex/include/boost/functional/hash/detail/limits.hpp
- ../regex/include/boost/functional/hash/extensions.hpp
- ../regex/include/boost/functional/hash/hash.hpp
- ../regex/include/boost/functional/hash/hash_fwd.hpp
- ../regex/include/boost/integer.hpp
- ../regex/include/boost/integer/static_log2.hpp
- ../regex/include/boost/integer_fwd.hpp
- ../regex/include/boost/integer_traits.hpp
- ../regex/include/boost/limits.hpp
- ../regex/include/boost/mpl/and.hpp
- ../regex/include/boost/mpl/aux_/adl_barrier.hpp
- ../regex/include/boost/mpl/aux_/arity.hpp
- ../regex/include/boost/mpl/aux_/config/adl.hpp
- ../regex/include/boost/mpl/aux_/config/arrays.hpp
- ../regex/include/boost/mpl/aux_/config/compiler.hpp
- ../regex/include/boost/mpl/aux_/config/ctps.hpp
- ../regex/include/boost/mpl/aux_/config/dtp.hpp
- ../regex/include/boost/mpl/aux_/config/eti.hpp
- ../regex/include/boost/mpl/aux_/config/gcc.hpp
- ../regex/include/boost/mpl/aux_/config/has_xxx.hpp
- ../regex/include/boost/mpl/aux_/config/integral.hpp
- ../regex/include/boost/mpl/aux_/config/intel.hpp
- ../regex/include/boost/mpl/aux_/config/lambda.hpp
- ../regex/include/boost/mpl/aux_/config/msvc.hpp
- ../regex/include/boost/mpl/aux_/config/msvc_typename.hpp
- ../regex/include/boost/mpl/aux_/config/nttp.hpp
- ../regex/include/boost/mpl/aux_/config/overload_resolution.hpp
- ../regex/include/boost/mpl/aux_/config/preprocessor.hpp
- ../regex/include/boost/mpl/aux_/config/static_constant.hpp
- ../regex/include/boost/mpl/aux_/config/ttp.hpp
- ../regex/include/boost/mpl/aux_/config/use_preprocessed.hpp
- ../regex/include/boost/mpl/aux_/config/workaround.hpp
- ../regex/include/boost/mpl/aux_/include_preprocessed.hpp
- ../regex/include/boost/mpl/aux_/integral_wrapper.hpp
- ../regex/include/boost/mpl/aux_/lambda_arity_param.hpp
- ../regex/include/boost/mpl/aux_/lambda_support.hpp
- ../regex/include/boost/mpl/aux_/logical_op.hpp
- ../regex/include/boost/mpl/aux_/na.hpp
- ../regex/include/boost/mpl/aux_/na_fwd.hpp
- ../regex/include/boost/mpl/aux_/na_spec.hpp
- ../regex/include/boost/mpl/aux_/nested_type_wknd.hpp
- ../regex/include/boost/mpl/aux_/nttp_decl.hpp
- ../regex/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp
- ../regex/include/boost/mpl/aux_/preprocessor/enum.hpp
- ../regex/include/boost/mpl/aux_/preprocessor/ext_params.hpp
- ../regex/include/boost/mpl/aux_/preprocessor/filter_params.hpp
- ../regex/include/boost/mpl/aux_/preprocessor/params.hpp
- ../regex/include/boost/mpl/aux_/preprocessor/sub.hpp
- ../regex/include/boost/mpl/aux_/preprocessor/tuple.hpp
- ../regex/include/boost/mpl/aux_/static_cast.hpp
- ../regex/include/boost/mpl/aux_/template_arity_fwd.hpp
- ../regex/include/boost/mpl/aux_/type_wrapper.hpp
- ../regex/include/boost/mpl/aux_/value_wknd.hpp
- ../regex/include/boost/mpl/aux_/yes_no.hpp
- ../regex/include/boost/mpl/bool.hpp
- ../regex/include/boost/mpl/bool_fwd.hpp
- ../regex/include/boost/mpl/has_xxx.hpp
- ../regex/include/boost/mpl/if.hpp
- ../regex/include/boost/mpl/int.hpp
- ../regex/include/boost/mpl/int_fwd.hpp
- ../regex/include/boost/mpl/integral_c_tag.hpp
- ../regex/include/boost/mpl/lambda_fwd.hpp
- ../regex/include/boost/mpl/limits/arity.hpp
- ../regex/include/boost/mpl/not.hpp
- ../regex/include/boost/mpl/void_fwd.hpp
- ../regex/include/boost/predef.h
- ../regex/include/boost/predef/architecture.h
- ../regex/include/boost/predef/architecture/alpha.h
- ../regex/include/boost/predef/architecture/arm.h
- ../regex/include/boost/predef/architecture/blackfin.h
- ../regex/include/boost/predef/architecture/convex.h
- ../regex/include/boost/predef/architecture/ia64.h
- ../regex/include/boost/predef/architecture/m68k.h
- ../regex/include/boost/predef/architecture/mips.h
- ../regex/include/boost/predef/architecture/parisc.h
- ../regex/include/boost/predef/architecture/ppc.h
- ../regex/include/boost/predef/architecture/pyramid.h
- ../regex/include/boost/predef/architecture/rs6k.h
- ../regex/include/boost/predef/architecture/sparc.h
- ../regex/include/boost/predef/architecture/superh.h
- ../regex/include/boost/predef/architecture/sys370.h
- ../regex/include/boost/predef/architecture/sys390.h
- ../regex/include/boost/predef/architecture/x86.h
- ../regex/include/boost/predef/architecture/x86/32.h
- ../regex/include/boost/predef/architecture/x86/64.h
- ../regex/include/boost/predef/architecture/z.h
- ../regex/include/boost/predef/compiler.h
- ../regex/include/boost/predef/compiler/borland.h
- ../regex/include/boost/predef/compiler/clang.h
- ../regex/include/boost/predef/compiler/comeau.h
- ../regex/include/boost/predef/compiler/compaq.h
- ../regex/include/boost/predef/compiler/diab.h
- ../regex/include/boost/predef/compiler/digitalmars.h
- ../regex/include/boost/predef/compiler/dignus.h
- ../regex/include/boost/predef/compiler/edg.h
- ../regex/include/boost/predef/compiler/ekopath.h
- ../regex/include/boost/predef/compiler/gcc.h
- ../regex/include/boost/predef/compiler/gcc_xml.h
- ../regex/include/boost/predef/compiler/greenhills.h
- ../regex/include/boost/predef/compiler/hp_acc.h
- ../regex/include/boost/predef/compiler/iar.h
- ../regex/include/boost/predef/compiler/ibm.h
- ../regex/include/boost/predef/compiler/intel.h
- ../regex/include/boost/predef/compiler/kai.h
- ../regex/include/boost/predef/compiler/llvm.h
- ../regex/include/boost/predef/compiler/metaware.h
- ../regex/include/boost/predef/compiler/metrowerks.h
- ../regex/include/boost/predef/compiler/microtec.h
- ../regex/include/boost/predef/compiler/mpw.h
- ../regex/include/boost/predef/compiler/palm.h
- ../regex/include/boost/predef/compiler/pgi.h
- ../regex/include/boost/predef/compiler/sgi_mipspro.h
- ../regex/include/boost/predef/compiler/sunpro.h
- ../regex/include/boost/predef/compiler/tendra.h
- ../regex/include/boost/predef/compiler/visualc.h
- ../regex/include/boost/predef/compiler/watcom.h
- ../regex/include/boost/predef/detail/_cassert.h
- ../regex/include/boost/predef/detail/_exception.h
- ../regex/include/boost/predef/detail/comp_detected.h
- ../regex/include/boost/predef/detail/os_detected.h
- ../regex/include/boost/predef/detail/platform_detected.h
- ../regex/include/boost/predef/detail/test.h
- ../regex/include/boost/predef/hardware.h
- ../regex/include/boost/predef/hardware/simd.h
- ../regex/include/boost/predef/hardware/simd/arm.h
- ../regex/include/boost/predef/hardware/simd/arm/versions.h
- ../regex/include/boost/predef/hardware/simd/ppc.h
- ../regex/include/boost/predef/hardware/simd/ppc/versions.h
- ../regex/include/boost/predef/hardware/simd/x86.h
- ../regex/include/boost/predef/hardware/simd/x86/versions.h
- ../regex/include/boost/predef/hardware/simd/x86_amd.h
- ../regex/include/boost/predef/hardware/simd/x86_amd/versions.h
- ../regex/include/boost/predef/language.h
- ../regex/include/boost/predef/language/objc.h
- ../regex/include/boost/predef/language/stdc.h
- ../regex/include/boost/predef/language/stdcpp.h
- ../regex/include/boost/predef/library.h
- ../regex/include/boost/predef/library/c.h
- ../regex/include/boost/predef/library/c/_prefix.h
- ../regex/include/boost/predef/library/c/gnu.h
- ../regex/include/boost/predef/library/c/uc.h
- ../regex/include/boost/predef/library/c/vms.h
- ../regex/include/boost/predef/library/c/zos.h
- ../regex/include/boost/predef/library/std.h
- ../regex/include/boost/predef/library/std/_prefix.h
- ../regex/include/boost/predef/library/std/cxx.h
- ../regex/include/boost/predef/library/std/dinkumware.h
- ../regex/include/boost/predef/library/std/libcomo.h
- ../regex/include/boost/predef/library/std/modena.h
- ../regex/include/boost/predef/library/std/msl.h
- ../regex/include/boost/predef/library/std/roguewave.h
- ../regex/include/boost/predef/library/std/sgi.h
- ../regex/include/boost/predef/library/std/stdcpp3.h
- ../regex/include/boost/predef/library/std/stlport.h
- ../regex/include/boost/predef/library/std/vacpp.h
- ../regex/include/boost/predef/make.h
- ../regex/include/boost/predef/os.h
- ../regex/include/boost/predef/os/aix.h
- ../regex/include/boost/predef/os/amigaos.h
- ../regex/include/boost/predef/os/android.h
- ../regex/include/boost/predef/os/beos.h
- ../regex/include/boost/predef/os/bsd.h
- ../regex/include/boost/predef/os/bsd/bsdi.h
- ../regex/include/boost/predef/os/bsd/dragonfly.h
- ../regex/include/boost/predef/os/bsd/free.h
- ../regex/include/boost/predef/os/bsd/net.h
- ../regex/include/boost/predef/os/bsd/open.h
- ../regex/include/boost/predef/os/cygwin.h
- ../regex/include/boost/predef/os/haiku.h
- ../regex/include/boost/predef/os/hpux.h
- ../regex/include/boost/predef/os/ios.h
- ../regex/include/boost/predef/os/irix.h
- ../regex/include/boost/predef/os/linux.h
- ../regex/include/boost/predef/os/macos.h
- ../regex/include/boost/predef/os/os400.h
- ../regex/include/boost/predef/os/qnxnto.h
- ../regex/include/boost/predef/os/solaris.h
- ../regex/include/boost/predef/os/unix.h
- ../regex/include/boost/predef/os/vms.h
- ../regex/include/boost/predef/os/windows.h
- ../regex/include/boost/predef/other.h
- ../regex/include/boost/predef/other/endian.h
- ../regex/include/boost/predef/platform.h
- ../regex/include/boost/predef/platform/mingw.h
- ../regex/include/boost/predef/platform/windows_desktop.h
- ../regex/include/boost/predef/platform/windows_phone.h
- ../regex/include/boost/predef/platform/windows_runtime.h
- ../regex/include/boost/predef/platform/windows_store.h
- ../regex/include/boost/predef/version.h
- ../regex/include/boost/predef/version_number.h
- ../regex/include/boost/preprocessor/arithmetic/add.hpp
- ../regex/include/boost/preprocessor/arithmetic/dec.hpp
- ../regex/include/boost/preprocessor/arithmetic/inc.hpp
- ../regex/include/boost/preprocessor/arithmetic/sub.hpp
- ../regex/include/boost/preprocessor/array/data.hpp
- ../regex/include/boost/preprocessor/array/elem.hpp
- ../regex/include/boost/preprocessor/array/size.hpp
- ../regex/include/boost/preprocessor/cat.hpp
- ../regex/include/boost/preprocessor/comma_if.hpp
- ../regex/include/boost/preprocessor/config/config.hpp
- ../regex/include/boost/preprocessor/control/detail/dmc/while.hpp
- ../regex/include/boost/preprocessor/control/detail/edg/while.hpp
- ../regex/include/boost/preprocessor/control/detail/msvc/while.hpp
- ../regex/include/boost/preprocessor/control/detail/while.hpp
- ../regex/include/boost/preprocessor/control/expr_iif.hpp
- ../regex/include/boost/preprocessor/control/if.hpp
- ../regex/include/boost/preprocessor/control/iif.hpp
- ../regex/include/boost/preprocessor/control/while.hpp
- ../regex/include/boost/preprocessor/debug/error.hpp
- ../regex/include/boost/preprocessor/dec.hpp
- ../regex/include/boost/preprocessor/detail/auto_rec.hpp
- ../regex/include/boost/preprocessor/detail/check.hpp
- ../regex/include/boost/preprocessor/detail/dmc/auto_rec.hpp
- ../regex/include/boost/preprocessor/detail/is_binary.hpp
- ../regex/include/boost/preprocessor/detail/split.hpp
- ../regex/include/boost/preprocessor/empty.hpp
- ../regex/include/boost/preprocessor/facilities/detail/is_empty.hpp
- ../regex/include/boost/preprocessor/facilities/empty.hpp
- ../regex/include/boost/preprocessor/facilities/expand.hpp
- ../regex/include/boost/preprocessor/facilities/identity.hpp
- ../regex/include/boost/preprocessor/facilities/is_1.hpp
- ../regex/include/boost/preprocessor/facilities/is_empty.hpp
- ../regex/include/boost/preprocessor/facilities/is_empty_variadic.hpp
- ../regex/include/boost/preprocessor/facilities/overload.hpp
- ../regex/include/boost/preprocessor/identity.hpp
- ../regex/include/boost/preprocessor/inc.hpp
- ../regex/include/boost/preprocessor/list/adt.hpp
- ../regex/include/boost/preprocessor/list/detail/dmc/fold_left.hpp
- ../regex/include/boost/preprocessor/list/detail/edg/fold_left.hpp
- ../regex/include/boost/preprocessor/list/detail/edg/fold_right.hpp
- ../regex/include/boost/preprocessor/list/detail/fold_left.hpp
- ../regex/include/boost/preprocessor/list/detail/fold_right.hpp
- ../regex/include/boost/preprocessor/list/fold_left.hpp
- ../regex/include/boost/preprocessor/list/fold_right.hpp
- ../regex/include/boost/preprocessor/list/for_each_i.hpp
- ../regex/include/boost/preprocessor/list/reverse.hpp
- ../regex/include/boost/preprocessor/logical/and.hpp
- ../regex/include/boost/preprocessor/logical/bitand.hpp
- ../regex/include/boost/preprocessor/logical/bool.hpp
- ../regex/include/boost/preprocessor/logical/compl.hpp
- ../regex/include/boost/preprocessor/punctuation/comma.hpp
- ../regex/include/boost/preprocessor/punctuation/comma_if.hpp
- ../regex/include/boost/preprocessor/punctuation/detail/is_begin_parens.hpp
- ../regex/include/boost/preprocessor/punctuation/is_begin_parens.hpp
- ../regex/include/boost/preprocessor/repeat.hpp
- ../regex/include/boost/preprocessor/repetition/detail/dmc/for.hpp
- ../regex/include/boost/preprocessor/repetition/detail/edg/for.hpp
- ../regex/include/boost/preprocessor/repetition/detail/for.hpp
- ../regex/include/boost/preprocessor/repetition/detail/msvc/for.hpp
- ../regex/include/boost/preprocessor/repetition/enum_params.hpp
- ../regex/include/boost/preprocessor/repetition/enum_trailing_params.hpp
- ../regex/include/boost/preprocessor/repetition/for.hpp
- ../regex/include/boost/preprocessor/repetition/repeat.hpp
- ../regex/include/boost/preprocessor/repetition/repeat_from_to.hpp
- ../regex/include/boost/preprocessor/stringize.hpp
- ../regex/include/boost/preprocessor/tuple/detail/is_single_return.hpp
- ../regex/include/boost/preprocessor/tuple/eat.hpp
- ../regex/include/boost/preprocessor/tuple/elem.hpp
- ../regex/include/boost/preprocessor/tuple/rem.hpp
- ../regex/include/boost/preprocessor/tuple/size.hpp
- ../regex/include/boost/preprocessor/tuple/to_list.hpp
- ../regex/include/boost/preprocessor/variadic/elem.hpp
- ../regex/include/boost/preprocessor/variadic/size.hpp
- ../regex/include/boost/ref.hpp
- ../regex/include/boost/regex.hpp
- ../regex/include/boost/regex/config.hpp
- ../regex/include/boost/regex/config/borland.hpp
- ../regex/include/boost/regex/config/cwchar.hpp
- ../regex/include/boost/regex/pattern_except.hpp
- ../regex/include/boost/regex/pending/object_cache.hpp
- ../regex/include/boost/regex/pending/static_mutex.hpp
- ../regex/include/boost/regex/regex_traits.hpp
- ../regex/include/boost/regex/v4/basic_regex.hpp
- ../regex/include/boost/regex/v4/basic_regex_creator.hpp
- ../regex/include/boost/regex/v4/basic_regex_parser.hpp
- ../regex/include/boost/regex/v4/c_regex_traits.hpp
- ../regex/include/boost/regex/v4/char_regex_traits.hpp
- ../regex/include/boost/regex/v4/cpp_regex_traits.hpp
- ../regex/include/boost/regex/v4/error_type.hpp
- ../regex/include/boost/regex/v4/instances.hpp
- ../regex/include/boost/regex/v4/iterator_category.hpp
- ../regex/include/boost/regex/v4/iterator_traits.hpp
- ../regex/include/boost/regex/v4/match_flags.hpp
- ../regex/include/boost/regex/v4/match_results.hpp
- ../regex/include/boost/regex/v4/perl_matcher.hpp
- ../regex/include/boost/regex/v4/perl_matcher_common.hpp
- ../regex/include/boost/regex/v4/perl_matcher_non_recursive.hpp
- ../regex/include/boost/regex/v4/perl_matcher_recursive.hpp
- ../regex/include/boost/regex/v4/primary_transform.hpp
- ../regex/include/boost/regex/v4/protected_call.hpp
- ../regex/include/boost/regex/v4/regbase.hpp
- ../regex/include/boost/regex/v4/regex.hpp
- ../regex/include/boost/regex/v4/regex_format.hpp
- ../regex/include/boost/regex/v4/regex_fwd.hpp
- ../regex/include/boost/regex/v4/regex_grep.hpp
- ../regex/include/boost/regex/v4/regex_iterator.hpp
- ../regex/include/boost/regex/v4/regex_match.hpp
- ../regex/include/boost/regex/v4/regex_merge.hpp
- ../regex/include/boost/regex/v4/regex_raw_buffer.hpp
- ../regex/include/boost/regex/v4/regex_replace.hpp
- ../regex/include/boost/regex/v4/regex_search.hpp
- ../regex/include/boost/regex/v4/regex_split.hpp
- ../regex/include/boost/regex/v4/regex_token_iterator.hpp
- ../regex/include/boost/regex/v4/regex_traits.hpp
- ../regex/include/boost/regex/v4/regex_traits_defaults.hpp
- ../regex/include/boost/regex/v4/regex_workaround.hpp
- ../regex/include/boost/regex/v4/states.hpp
- ../regex/include/boost/regex/v4/sub_match.hpp
- ../regex/include/boost/regex/v4/syntax_type.hpp
- ../regex/include/boost/regex/v4/w32_regex_traits.hpp
- ../regex/include/boost/regex_fwd.hpp
- ../regex/include/boost/scoped_array.hpp
- ../regex/include/boost/scoped_ptr.hpp
- ../regex/include/boost/shared_ptr.hpp
- ../regex/include/boost/smart_ptr/bad_weak_ptr.hpp
- ../regex/include/boost/smart_ptr/detail/lightweight_mutex.hpp
- ../regex/include/boost/smart_ptr/detail/lwm_nop.hpp
- ../regex/include/boost/smart_ptr/detail/lwm_pthreads.hpp
- ../regex/include/boost/smart_ptr/detail/lwm_win32_cs.hpp
- ../regex/include/boost/smart_ptr/detail/operator_bool.hpp
- ../regex/include/boost/smart_ptr/detail/quick_allocator.hpp
- ../regex/include/boost/smart_ptr/detail/shared_count.hpp
- ../regex/include/boost/smart_ptr/detail/sp_convertible.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_acc_ia64.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_aix.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_clang.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_cw_ppc.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_gcc_ia64.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_gcc_mips.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_gcc_ppc.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_gcc_sparc.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_gcc_x86.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_nt.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_pt.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_snc_ps3.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_spin.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_std_atomic.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_sync.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_vacpp_ppc.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_base_w32.hpp
- ../regex/include/boost/smart_ptr/detail/sp_counted_impl.hpp
- ../regex/include/boost/smart_ptr/detail/sp_disable_deprecated.hpp
- ../regex/include/boost/smart_ptr/detail/sp_has_sync.hpp
- ../regex/include/boost/smart_ptr/detail/sp_interlocked.hpp
- ../regex/include/boost/smart_ptr/detail/sp_nullptr_t.hpp
- ../regex/include/boost/smart_ptr/detail/spinlock.hpp
- ../regex/include/boost/smart_ptr/detail/spinlock_gcc_arm.hpp
- ../regex/include/boost/smart_ptr/detail/spinlock_nt.hpp
- ../regex/include/boost/smart_ptr/detail/spinlock_pool.hpp
- ../regex/include/boost/smart_ptr/detail/spinlock_pt.hpp
- ../regex/include/boost/smart_ptr/detail/spinlock_std_atomic.hpp
- ../regex/include/boost/smart_ptr/detail/spinlock_sync.hpp
- ../regex/include/boost/smart_ptr/detail/spinlock_w32.hpp
- ../regex/include/boost/smart_ptr/detail/yield_k.hpp
- ../regex/include/boost/smart_ptr/scoped_array.hpp
- ../regex/include/boost/smart_ptr/scoped_ptr.hpp
- ../regex/include/boost/smart_ptr/shared_ptr.hpp
- ../regex/include/boost/static_assert.hpp
- ../regex/include/boost/throw_exception.hpp
- ../regex/include/boost/type_traits/add_const.hpp
- ../regex/include/boost/type_traits/add_lvalue_reference.hpp
- ../regex/include/boost/type_traits/add_reference.hpp
- ../regex/include/boost/type_traits/add_rvalue_reference.hpp
- ../regex/include/boost/type_traits/add_volatile.hpp
- ../regex/include/boost/type_traits/alignment_of.hpp
- ../regex/include/boost/type_traits/conditional.hpp
- ../regex/include/boost/type_traits/declval.hpp
- ../regex/include/boost/type_traits/detail/config.hpp
- ../regex/include/boost/type_traits/detail/is_function_ptr_helper.hpp
- ../regex/include/boost/type_traits/detail/is_function_ptr_tester.hpp
- ../regex/include/boost/type_traits/detail/is_mem_fun_pointer_impl.hpp
- ../regex/include/boost/type_traits/detail/is_mem_fun_pointer_tester.hpp
- ../regex/include/boost/type_traits/detail/yes_no_type.hpp
- ../regex/include/boost/type_traits/integral_constant.hpp
- ../regex/include/boost/type_traits/intrinsics.hpp
- ../regex/include/boost/type_traits/is_abstract.hpp
- ../regex/include/boost/type_traits/is_arithmetic.hpp
- ../regex/include/boost/type_traits/is_array.hpp
- ../regex/include/boost/type_traits/is_class.hpp
- ../regex/include/boost/type_traits/is_const.hpp
- ../regex/include/boost/type_traits/is_convertible.hpp
- ../regex/include/boost/type_traits/is_enum.hpp
- ../regex/include/boost/type_traits/is_floating_point.hpp
- ../regex/include/boost/type_traits/is_function.hpp
- ../regex/include/boost/type_traits/is_integral.hpp
- ../regex/include/boost/type_traits/is_lvalue_reference.hpp
- ../regex/include/boost/type_traits/is_member_function_pointer.hpp
- ../regex/include/boost/type_traits/is_member_pointer.hpp
- ../regex/include/boost/type_traits/is_pod.hpp
- ../regex/include/boost/type_traits/is_pointer.hpp
- ../regex/include/boost/type_traits/is_polymorphic.hpp
- ../regex/include/boost/type_traits/is_reference.hpp
- ../regex/include/boost/type_traits/is_rvalue_reference.hpp
- ../regex/include/boost/type_traits/is_same.hpp
- ../regex/include/boost/type_traits/is_scalar.hpp
- ../regex/include/boost/type_traits/is_signed.hpp
- ../regex/include/boost/type_traits/is_union.hpp
- ../regex/include/boost/type_traits/is_unsigned.hpp
- ../regex/include/boost/type_traits/is_void.hpp
- ../regex/include/boost/type_traits/is_volatile.hpp
- ../regex/include/boost/type_traits/make_unsigned.hpp
- ../regex/include/boost/type_traits/remove_cv.hpp
- ../regex/include/boost/type_traits/remove_pointer.hpp
- ../regex/include/boost/type_traits/remove_reference.hpp
- ../regex/include/boost/type_traits/type_with_alignment.hpp
- ../regex/include/boost/utility/addressof.hpp
- ../regex/include/boost/utility/enable_if.hpp
- ../regex/include/boost/version.hpp
- /home/stevan/etf/sistSoft/projekat/assembler_parser/src/relocationcontenttablebuilder.cpp
-CMakeFiles/asm_parser.dir/assembler_parser/src/sectioncontenttablebuilder.cpp.o
- ../assembler_parser/include/contenttablebuilder.h
- ../assembler_parser/include/data.h
- ../assembler_parser/include/directivetoken.h
- ../assembler_parser/include/instructiontoken.h
- ../assembler_parser/include/labeltoken.h
- ../assembler_parser/include/linemanipulation.h
  ../assembler_parser/include/sectioncontenttablebuilder.h
  ../assembler_parser/include/sectiondata.h
+ ../assembler_parser/include/symboldata.h
  ../assembler_parser/include/tablebuilder.h
  ../assembler_parser/include/token.h
+ ../exprtk/exprtk.hpp
  ../regex/include/boost/assert.hpp
  ../regex/include/boost/checked_delete.hpp
  ../regex/include/boost/config.hpp
