@@ -15,10 +15,10 @@ public:
 	int getInstrSize() const;
 	std::string getName() const;
 	std::string getCondition() const;
-	virtual std::string getFlag() const = 0;
+	std::string getFlag() const;
 	virtual std::string getOC() const = 0;
 protected:
-	std::string name;
+	std::string name, flag;
 };
 
 class InterruptInstructionToken: public InstructionToken
@@ -29,7 +29,6 @@ public:
 	{
 		return interrupt_instruction;
 	}
-	std::string getFlag() const;
 	std::string getOC() const;
 	char getSrc() const
 	{
@@ -47,26 +46,17 @@ public:
 	{
 		return term_instruction;
 	}
-	std::string getFlag() const;
 	std::string getOC() const;
 	std::string getDst() const
 	{
 		return dst;
 	}
-	std::string getBit() const
+	std::string getSrcImm() const
 	{
-		return bit;
-	}
-	std::string getSrc() const
-	{
-		return src;
-	}
-	std::string getImm() const
-	{
-		return imm;
+		return src_imm;
 	}
 protected:
-	std::string dst, bit, src, imm;
+	std::string dst, src_imm;
 };
 
 class LogicalInstructionToken: public InstructionToken
@@ -77,7 +67,6 @@ public:
 	{
 		return logical_instruction;
 	}
-	std::string getFlag() const;
 	std::string getOC() const;
 	std::string getDst() const
 	{
@@ -99,7 +88,6 @@ public:
 	{
 		return stack_instruction;
 	}
-	std::string getFlag() const;
 	std::string getOC() const;
 	std::string getA() const
 	{
@@ -108,6 +96,10 @@ public:
 	std::string getR() const
 	{
 		return r;
+	}
+	std::string getF() const
+	{
+		return f;
 	}
 	std::string getLS() const
 	{
@@ -129,7 +121,6 @@ public:
 	{
 		return call_instruction;
 	}
-	std::string getFlag() const;
 	std::string getOC() const;
 	std::string getDst() const
 	{
@@ -151,7 +142,6 @@ public:
 	{
 		return io_instruction;
 	}
-	std::string getFlag() const;
 	std::string getOC() const;
 	std::string getDst() const
 	{
@@ -177,7 +167,6 @@ public:
 	{
 		return move_instruction;
 	}
-	std::string getFlag() const;
 	std::string getOC() const;
 	std::string getDst() const
 	{
@@ -207,7 +196,6 @@ public:
 	{
 		return load_instruction;
 	}
-	std::string getFlag() const;
 	std::string getOC() const;
 	std::string getDst() const
 	{

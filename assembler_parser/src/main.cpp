@@ -6,14 +6,14 @@
 int main(void)
 {
 	std::ifstream my_program("/home/stevan/etf/sistSoft/projekat/input0.asm");
+	/* -------- start first pass -------- */
 	AsmParser* parser = new AsmParserFirstPass();
 	parser->parse(my_program);
-	parser->printTables();
 	std::vector<SymbolData*> symbols = parser->getSymbols();
+	std::vector<Token*> tokens = parser->getTokenList();
 	delete parser;
-	my_program.clear();
-	my_program.seekg(0, ios::beg);
-	parser = new AsmParserSecondPass(symbols);
+	/* -------- start second pass -------- */
+	parser = new AsmParserSecondPass(tokens, symbols);
 	parser->parse(my_program);
 	parser->printTables();
 	delete parser;

@@ -8,7 +8,7 @@ class SectionData: public Data
 public:
 	std::string content;
 
-	SectionData(int offset, int line_number, int position, std::string content) : Data(offset, line_number, position)
+	SectionData(int offset, std::string content) : Data(offset)
 	{
 		this->content = content;
 	}

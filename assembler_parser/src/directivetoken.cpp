@@ -4,7 +4,7 @@
  * DirectiveToken implementation
  */
 
-const boost::regex DirectiveToken::pattern("^(?:[a-zA-Z0-9]+: )?\\.([a-zA-Z]+)(?|\\.([a-zA-Z]+)| ([0-9a-zA-Z /*+-]+)((?:,[a-zA-Z0-9 /*+-]+)*))");
+const boost::regex DirectiveToken::pattern("^(?:[a-zA-Z0-9]+:[ ]?)?\\.([a-zA-Z]+)(?|\\.([a-zA-Z]+)| ([0-9a-zA-Z '%<>=/*+-]+)((?:,[a-zA-Z0-9 '/*+-]+)*))?$");
 
 DirectiveToken::DirectiveToken(int line_number, const boost::match_results<std::string::const_iterator>& content) : Token(line_number, content)
 {
@@ -32,7 +32,7 @@ DirectiveToken* DirectiveToken::getDirective(int line_number, const boost::match
 	} else if (section == "end") {
 		return new EndDirectiveToken(line_number, content);
 	} else {
-		//error: throw error: undefined section!
+		throw MyException("Undefined Directive: ", line_number, content.position(), content.str());
 		return 0;
 	}
 }

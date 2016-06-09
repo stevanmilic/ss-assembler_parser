@@ -7,12 +7,11 @@
 class AsmParserSecondPass: public AsmParser
 {
 public:
-	AsmParserSecondPass(std::vector<SymbolData*>& symbols);
-	bool parseLine(std::string& line, int line_number);
+	AsmParserSecondPass(std::vector<Token*>, std::vector<SymbolData*>&);
+	void parse(std::ifstream& program);
 	void printTables() const;
 	std::vector<SymbolData*> getSymbols();
 private:
-	void lex(std::string& line, int line_number);
 	CompositeTableBuilder composite_table;
 };
 

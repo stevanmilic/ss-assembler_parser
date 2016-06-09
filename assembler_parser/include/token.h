@@ -3,6 +3,7 @@
 #include <string>
 #include <boost/regex.hpp>
 #include "linemanipulation.h"
+#include "my_exception.h"
 
 enum token_type {label, directive, instruction, section_directive, io_directive, type_directive, align_directive, skip_directive, end_directive, interrupt_instruction, term_instruction, io_instruction, logical_instruction, stack_instruction, call_instruction, move_instruction, load_instruction};
 

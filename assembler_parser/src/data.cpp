@@ -4,9 +4,6 @@
  * Data implementation
  */
 
-
-Data::Data(int offset, int line_number, int position){
+Data::Data(int offset){
 	this->offset = offset;
-	this->line_number = line_number;
-	this->position = position;
 }

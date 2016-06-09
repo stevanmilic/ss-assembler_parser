@@ -47,10 +47,10 @@ void CompositeTableBuilder::resolveIODirective(Token *token)
 	bool is_extern = iotoken->getSection() == "extern" ? true : false;
 	for (std::vector<std::string>::const_iterator it = symbols.begin(); it != symbols.end(); ++it) {
 		if (is_extern) {
-			this->symbols.push_back(new SymbolData(current_section->getLocation(), iotoken->getLineNumber(), iotoken->getPosition(), *it, current_section->getName(), "global"));
+			this->symbols.push_back(new SymbolData(current_section->getLocation(), *it, current_section->getName(), "global"));
 		} else {
 			if (!labelGoPublic(*it)) {
-				return;//throw error -> label not found
+				throw MyException("Label not found for Directive: ", iotoken->getLineNumber(), iotoken->getPosition(), iotoken->getSection());
 			}
 		}
 	}

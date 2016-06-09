@@ -11,14 +11,13 @@
 
 SectionDirectiveToken::SectionDirectiveToken(int line_number, const boost::match_results<std::string::const_iterator>& content) : DirectiveToken(line_number, content)
 {
-	sub_section = content[2];
+	if (!content[2].str().empty()) {
+		sub_section = LineManipulation::split(content[2].str(), '.')[0];
+	}
 }
 
 IODirectiveToken::IODirectiveToken(int line_number, const boost::match_results<std::string::const_iterator>& content) : DirectiveToken(line_number, content)
 {
-	if (content[2].str().empty()) {
-		;//throw errror -> no symbols
-	}
 	symbols.push_back(content[2].str());
 	LineManipulation::split(content[3].str(), ',', symbols);
 }
@@ -33,9 +32,6 @@ TypeDirectiveToken::TypeDirectiveToken(int line_number, const boost::match_resul
 
 AlignDirectiveToken::AlignDirectiveToken(int line_number, const boost::match_results<std::string::const_iterator>& content) : DirectiveToken(line_number, content)
 {
-	if (content[2].str().empty()) {
-		;//throw error -> undefined alignment
-	}
 	//catch : 'std::invalid_argument'
 	alignment = std::stoi(content[2].str());
 	//default values
@@ -44,7 +40,7 @@ AlignDirectiveToken::AlignDirectiveToken(int line_number, const boost::match_res
 
 	std::vector<std::string>params = LineManipulation::split(content[3].str(), ',');
 	if (params.size() >= 3) {
-		;//throw error -> too much params
+		throw MyException("Too much parametars for Directive: ", line_number, content.position(), content.str());
 	}
 	if (params.size() == 1) {
 		fill = (char)std::stoi(params[0], 0, 0);
@@ -56,9 +52,6 @@ AlignDirectiveToken::AlignDirectiveToken(int line_number, const boost::match_res
 
 SkipDirectiveToken::SkipDirectiveToken(int line_number, const boost::match_results<std::string::const_iterator>& content) : DirectiveToken(line_number, content)
 {
-	if (content[2].str().empty()) {
-		;//throw error -> undefined alignment
-	}
 	// catch: 'std::invalid_argument'
 	size = std::stoi(content[2].str(), 0, 0);
 	//default value
@@ -66,7 +59,7 @@ SkipDirectiveToken::SkipDirectiveToken(int line_number, const boost::match_resul
 
 	std::vector<std::string>params = LineManipulation::split(content[3].str(), ',');
 	if (params.size() >= 2) {
-		;//throw error too much arguments
+		throw MyException("Too much parametars for Directive: ", line_number, content.position(), content.str());
 	}
 	if (params.size() == 1) {
 		fill = (char)std::stoi(params[0], 0, 0);

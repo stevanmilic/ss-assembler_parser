@@ -38,9 +38,6 @@ bool SymbolTableBuilder::resolveToken(Token* token)
 	case call_instruction:
 	case move_instruction:
 	case load_instruction:
-		if (current_section != "text") {
-			return false;//throw error -> instruction not allowed in current section
-		}
 		resolveInstruction(token);
 		break;
 	default:
@@ -53,9 +50,9 @@ void SymbolTableBuilder::resolveLabel(Token *token)
 {
 	LabelToken* ltoken = dynamic_cast<LabelToken*>(token);
 	if (checkIfExists(ltoken->getName())) {
-		return;//throws error
+		throw MyException("Label already exists: ", ltoken->getLineNumber(), ltoken->getPosition(), ltoken->getName());
 	}
-	symbols.push_back(new SymbolData(location_counter, ltoken->getLineNumber(), ltoken->getPosition(), ltoken->getName(), current_section, "local"));
+	symbols.push_back(new SymbolData(location_counter, ltoken->getName(), current_section, "local"));
 }
 
 void SymbolTableBuilder::resolveSectionDirective(Token *token)
@@ -64,10 +61,10 @@ void SymbolTableBuilder::resolveSectionDirective(Token *token)
 	std::string label = sdtoken->getSubSection().empty() ? "." + sdtoken->getSection() : "." + sdtoken->getSection() + "." + sdtoken->getSubSection();
 	location_counter = 0;
 	if (checkIfExists(label)) {
-		return;//throws error
+		throw MyException("Section already exists: ", sdtoken->getLineNumber(), sdtoken->getPosition(), label);
 	}
 	current_section = sdtoken->getSection();
-	symbols.push_back(new SymbolData(location_counter, sdtoken->getLineNumber(), sdtoken->getPosition(), label, current_section, "local"));
+	symbols.push_back(new SymbolData(location_counter, label, current_section, "local"));
 }
 
 void SymbolTableBuilder::resolveTypeDirective(Token *token)
@@ -104,6 +101,9 @@ void SymbolTableBuilder::resolveAlignDirective(Token *token)
 
 void SymbolTableBuilder::resolveInstruction(Token *token)
 {
+	if (current_section != "text") {
+		throw MyException("Instruction not allowed in current Section: ", token->getLineNumber(), token->getPosition(), current_section);
+	}
 	InstructionToken* itoken = dynamic_cast<InstructionToken*>(token);
 	location_counter += itoken->getInstrSize();
 }

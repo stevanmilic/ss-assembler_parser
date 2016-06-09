@@ -10,7 +10,7 @@ public:
 	std::string label;
 	std::string section;
 	std::string local;
-	SymbolData(int offset, int line_number, int position, std::string label, std::string section, std::string local) : Data(offset, line_number, position)
+	SymbolData(int offset, std::string label, std::string section, std::string local) : Data(offset)
 	{
 		this->label = label;
 		this->section = section;

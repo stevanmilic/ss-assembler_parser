@@ -5,10 +5,11 @@
 #include "sectiondata.h"
 #include "symboldata.h"
 #include "reloactiondata.h"
-#include <exprtk.hpp>
 #include <iomanip>
 #include <bitset>
 #include <boost/regex.hpp>
+#include <exprtk.hpp>
+#include <iostream>
 
 typedef exprtk::symbol_table<double> symbol_table_t;
 typedef exprtk::expression<double>     expression_t;
@@ -23,18 +24,26 @@ public:
 	std::string getName() const;
 	std::ostream& dump(std::ostream& o) const;
 protected:
-	void resolveTypeDirective(Token* token);
-	void resolveSkipDirective(Token* token);
-	void resolveAlignDirective(Token *token);
-	void resolveInterruptInstruction(Token* token);
-	void resolveTermInstruction(Token* token);
+	void resolveTypeDirective(Token*);
+	void resolveSkipDirective(Token*);
+	void resolveAlignDirective(Token*);
+	void resolveInterruptInstruction(Token*);
+	void resolveTermInstruction(Token*);
+	void resolveLogicalInstruction(Token*);
+	void resolveStackInstruction(Token*);
+	void resolveCallInstruction(Token*);
+	void resolveIOInstruction(Token*);
+	void resolveMoveInstruction(Token*);
+	void resolveLoadInstruction(Token*);
 private:
 	double resolveExpression(std::string, Token*);
 	template <typename T>
 	std::string valueToString(T value);
-	bool resolveExpressionError(std:: string, symbol_table_t&, Token*);
+	bool resolveExpressionError(std:: string, symbol_table_t&);
 	void addInstruction(std::string&, InstructionToken*);
 	char getRegister(std::string);
+	template <typename T>
+	bool checkRange(T, unsigned);
 	boost::regex undefined_symbol;
 	std::vector<SectionData*> section_data;
 	std::list<ReloactionData*> relocations;

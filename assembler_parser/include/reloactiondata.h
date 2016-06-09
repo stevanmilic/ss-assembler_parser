@@ -10,7 +10,7 @@ public:
 	std::string type;
 	int serial_number;
 
-	ReloactionData(int offset, int line_number, int position, std::string section, std::string type, int serial_number) : Data(offset, line_number, position)
+	ReloactionData(int offset, std::string section, std::string type, int serial_number) : Data(offset)
 	{
 		this->section = section;
 		this->type = type;

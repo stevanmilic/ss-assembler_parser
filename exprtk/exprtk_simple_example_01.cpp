@@ -16,19 +16,19 @@
 */
 
 
-#include <cstdio>
+#include <iostream>
 #include <string>
 #include "exprtk.hpp"
 
 
 template <typename T>
-void trig_function()
+void trig_function(std::string expression_string)
 {
 	typedef exprtk::symbol_table<T> symbol_table_t;
 	typedef exprtk::expression<T>     expression_t;
 	typedef exprtk::parser<T>             parser_t;
-
-	std::string expression_string = "main + 2 + gsda";
+	typedef typename parser_t::
+	dependent_entity_collector::symbol_t symbol_t;
 
 	symbol_table_t symbol_table;
 
@@ -36,21 +36,29 @@ void trig_function()
 	expression.register_symbol_table(symbol_table);
 
 	parser_t parser;
+
 	if (!parser.compile(expression_string, expression)) {
 
 		printf("Error: %s\n", parser.error().c_str());
-		symbol_table.add_constant("main",3);
-		parser.compile(expression_string, expression);
-		printf("Error: %s\n", parser.error().c_str());
+		// symbol_table.add_constant("main", 3);
+		// parser.compile(expression_string, expression);
 
 	}
+	std::deque<symbol_t> symbol_list;
+
 	double result = expression.value();
 
-	printf("Result: %10.5f\n", result);
+	if (isnan(result)) {
+		expression_string.erase(0,1);
+		expression_string.erase(expression_string.size() - 1);
+		int test = std::stoi(expression_string, 0, 0);
+		std::cout << test;
+	}
 }
 
-int main()
+int main(int argc, char* argv[])
 {
-	trig_function<double>();
+	std::string expression = argv[1];
+	trig_function<double>(expression);
 	return 0;
 }

@@ -4,30 +4,21 @@
  * AsmParserSecondPass implementation
  */
 
-AsmParserSecondPass::AsmParserSecondPass(std::vector<SymbolData*>& symbols) : composite_table(symbols)
-{	
+AsmParserSecondPass::AsmParserSecondPass(std::vector<Token*> tokens, std::vector<SymbolData*>& symbols) : composite_table(symbols)
+{
+	this->tokens = tokens;
 }
 
-bool AsmParserSecondPass::parseLine(std::string& line, int line_number)
+void AsmParserSecondPass::parse(std::ifstream& program)
 {
-	lex(line, line_number);
-	for (std::list<Token*>::iterator it = tokens.begin(); it != tokens.end();) {
-		if(!composite_table.resolveToken(*it))
-			return false;
-		// cout << (*it)->getContent() << endl;
-		it = tokens.erase(it);
+	for (std::vector<Token*>::iterator token = tokens.begin(); token != tokens.end(); ++token) {
+		try {
+			if (!composite_table.resolveToken(*token))
+				break;
+		} catch (std::exception& e) {
+			std::cout << e.what() << std::endl;
+		}
 	}
-	return true;
-}
-
-void AsmParserSecondPass::lex(std::string& line, int line_number)
-{
-	LineManipulation::trim(line);
-	LineManipulation::whiteToOne(line);
-	//search for directives
-	getTokens(line, line_number, directive);
-	//search for instructions
-	getTokens(line, line_number, instruction);
 }
 
 void AsmParserSecondPass::printTables() const
@@ -37,5 +28,5 @@ void AsmParserSecondPass::printTables() const
 
 std::vector<SymbolData*> AsmParserSecondPass::getSymbols()
 {
-	return composite_table.getSymbols();	
+	return composite_table.getSymbols();
 }
