@@ -4,7 +4,7 @@
  * DirectiveToken implementation
  */
 
-const boost::regex DirectiveToken::pattern("^(?:[a-zA-Z0-9]+:[ ]?)?\\.([a-zA-Z]+)(?|\\.([a-zA-Z]+)| ([0-9a-zA-Z '%<>=/*+-]+)((?:,[a-zA-Z0-9 '/*+-]+)*))?$");
+const boost::regex DirectiveToken::pattern("^(?:[a-zA-Z0-9]+:[ ]?)?\\.([a-zA-Z]+)(?|\\.([a-zA-Z]+)| ([0-9a-zA-Z '%<>=/*+-]+)((?:,[a-zA-Z0-9 '%<>=/*+-]+)*))?$");
 
 DirectiveToken::DirectiveToken(int line_number, const boost::match_results<std::string::const_iterator>& content) : Token(line_number, content)
 {

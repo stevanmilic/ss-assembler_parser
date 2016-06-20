@@ -1,1 +1,6 @@
 build/
+boost/
+.~lock*
+.ycm*
+.syntastic*
+.ropeproject/

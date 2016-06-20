@@ -251,6 +251,8 @@ void SectionContentTableBuilder::resolveTypeDirective(Token* token)
 		int increment = 0;
 		std::string expression_value;
 		try {
+			//TO DO: check if value from expression is valid for 1, 2 and 4 bytes
+			//throw error btw 
 			if (type == "long") {
 				increment = 4;
 				expression_value = valueToString<int>(resolveExpression(*it, token));
@@ -315,6 +317,11 @@ bool SectionContentTableBuilder::resolveExpressionError(std:: string error, symb
 		}
 	}
 	return false;
+}
+
+static inline unsigned short __builtin_bswap16(short int a)
+{
+  return (a<<8)|(a>>8);
 }
 
 template <typename T>
