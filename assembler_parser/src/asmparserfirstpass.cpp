@@ -4,12 +4,13 @@
  * AsmParserFirstPass implementation
  */
 
-AsmParserFirstPass::AsmParserFirstPass()
+AsmParserFirstPass::AsmParserFirstPass(std::string program_path)
 {
 	current_token = 0;
+	program.open("/home/stevan/etf/sistSoft/projekat/input0.asm");
 }
 
-void AsmParserFirstPass::parse(std::ifstream& program)
+void AsmParserFirstPass::parse()
 {
 	std::string line;
 	int line_number = 1;

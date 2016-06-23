@@ -13,11 +13,12 @@
 class AsmParser
 {
 public:
-	virtual void parse(std::ifstream& program) = 0;
+	AsmParser();
+	virtual void parse() = 0;
 	virtual void printTables() const = 0;
 	virtual std::vector<SymbolData*> getSymbols() = 0;
 	std::vector<Token*> getTokenList();
-	virtual ~AsmParser() {}
+	virtual ~AsmParser();
 protected:
 	std::vector<Token*> tokens;
 };

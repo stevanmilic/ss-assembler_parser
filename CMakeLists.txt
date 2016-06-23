@@ -5,7 +5,7 @@ project (AssemblerParser)
 
 SET(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -std=c++0x")
  
-include_directories(assembler_parser/include/ regex/include/ exprtk/)
+include_directories(assembler_parser/include/ regex/include/ exprtk/ elf_format/)
 
 link_directories(/home/stevan/etf/sistSoft/projekat/regex/lib)
 

@@ -8,7 +8,7 @@ class AsmParserSecondPass: public AsmParser
 {
 public:
 	AsmParserSecondPass(std::vector<Token*>, std::vector<SymbolData*>&);
-	void parse(std::ifstream& program);
+	void parse();
 	void printTables() const;
 	std::vector<SymbolData*> getSymbols();
 private:

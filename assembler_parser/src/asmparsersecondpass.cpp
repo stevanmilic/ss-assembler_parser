@@ -9,7 +9,7 @@ AsmParserSecondPass::AsmParserSecondPass(std::vector<Token*> tokens, std::vector
 	this->tokens = tokens;
 }
 
-void AsmParserSecondPass::parse(std::ifstream& program)
+void AsmParserSecondPass::parse()
 {
 	for (std::vector<Token*>::iterator token = tokens.begin(); token != tokens.end(); ++token) {
 		try {
