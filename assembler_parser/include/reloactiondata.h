@@ -6,21 +6,27 @@
 class ReloactionData: public Data
 {
 public:
-	std::string section;
-	std::string type;
-	int serial_number;
+	int symbol_index;
 
-	ReloactionData(int offset, std::string section, std::string type, int serial_number) : Data(offset)
+	ReloactionData(int offset, int symbol_index) : Data(offset)
 	{
-		this->section = section;
-		this->type = type;
-		this->serial_number = serial_number;
+		this->symbol_index = symbol_index;
 	}
 
 	std::ostream& dump(std::ostream& o) const
 	{
-		o << "| " << section << " | " << offset << " | " << type << " | " << serial_number << " |\n";
+		o << "| " << symbol_index << " | " << offset << " |\n";
 		return o;
+	}
+};
+
+class LinkerRelocationData : public ReloactionData
+{
+public:
+	std::string symbol_name;
+	LinkerRelocationData(int offset, int symbol_index, std::string symbol_name) : ReloactionData(offset, symbol_index)
+	{
+		this->symbol_name = symbol_name;
 	}
 };
 

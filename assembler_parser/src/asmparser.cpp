@@ -4,11 +4,11 @@
  * AsmParser implementation
  */
 
-AsmParser::~AsmParser()
+AsmParser::AsmParser()
 {
+	error = false;
 }
 
-std::vector<Token*> AsmParser::getTokenList()
+AsmParser::~AsmParser()
 {
-	return tokens;
 }

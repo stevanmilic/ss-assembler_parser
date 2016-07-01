@@ -1,15 +1,23 @@
 #include "compositetablebuilder.h"
+#include "sectioncontenttablebuilder.h"
+#include "symboldata.h"
 
 /**
  * CompositeTableBuilder implementation
  */
 
-CompositeTableBuilder::CompositeTableBuilder(std::vector<SymbolData*>& symbols)
+CompositeTableBuilder::CompositeTableBuilder(AsmTableBuilder* symbol_table)
 {
-	this->symbols = symbols;
+	sections.push_back(symbol_table);
 }
 
-bool CompositeTableBuilder::resolveToken(Token* token)
+CompositeTableBuilder::~CompositeTableBuilder()
+{
+	for (std::vector<AsmTableBuilder*>::iterator it = sections.begin(); it != sections.end(); ++it)
+		delete *it;
+}
+
+bool CompositeTableBuilder::resolveToken(Token *token)
 {
 	switch (token->getType()) {
 	case section_directive:
@@ -29,7 +37,7 @@ bool CompositeTableBuilder::resolveToken(Token* token)
 	case call_instruction:
 	case move_instruction:
 	case load_instruction:
-		current_section->resolveToken(token);
+		sections.back()->resolveToken(token);
 		break;
 	case end_directive:
 		return false;
@@ -42,12 +50,13 @@ bool CompositeTableBuilder::resolveToken(Token* token)
 
 void CompositeTableBuilder::resolveIODirective(Token *token)
 {
-	IODirectiveToken* iotoken = dynamic_cast<IODirectiveToken*>(token);
+	IODirectiveAsmToken* iotoken = static_cast<IODirectiveAsmToken*>(token);
 	std::vector<std::string> symbols = iotoken->getSymbols();
 	bool is_extern = iotoken->getSection() == "extern" ? true : false;
+	std::vector<Data*>& symbol_table = sections.front()->getSymbols();
 	for (std::vector<std::string>::const_iterator it = symbols.begin(); it != symbols.end(); ++it) {
 		if (is_extern) {
-			this->symbols.push_back(new SymbolData(current_section->getLocation(), *it, current_section->getName(), "global"));
+			symbol_table.push_back(new SymbolData(0, *it, "UND", "global"));
 		} else {
 			if (!labelGoPublic(*it)) {
 				throw MyException("Label not found for Directive: ", iotoken->getLineNumber(), iotoken->getPosition(), iotoken->getSection());
@@ -58,9 +67,11 @@ void CompositeTableBuilder::resolveIODirective(Token *token)
 
 bool CompositeTableBuilder::labelGoPublic(std::string label)
 {
-	for (std::vector<SymbolData*>::iterator it = symbols.begin(); it != symbols.end(); ++it) {
-		if ((*it)->label == label) {
-			(*it)->local = "global";
+	std::vector<Data*>& symbols = sections.front()->getSymbols();
+	for (std::vector<Data*>::iterator it = symbols.begin(); it != symbols.end(); ++it) {
+		SymbolData* symbol = static_cast<SymbolData*>(*it);
+		if (symbol->label == label) {
+			symbol->local = "global";
 			return true;
 		}
 	}
@@ -70,22 +81,37 @@ bool CompositeTableBuilder::labelGoPublic(std::string label)
 
 void CompositeTableBuilder::resolveSectionDirective(Token *token)
 {
-	SectionDirectiveToken* sdtoken = dynamic_cast<SectionDirectiveToken*>(token);
-	current_section = new SectionContentTableBuilder(sdtoken->getSection(), &symbols);
-	sections.push_back(current_section);
+	SectionDirectiveAsmToken* sdtoken = static_cast<SectionDirectiveAsmToken*>(token);
+	std::vector<Data*>& symbols = sections.front()->getSymbols();
+	std::string label = sdtoken->getSubSection().empty() ? "." + sdtoken->getSection() : "." + sdtoken->getSection() + "." + sdtoken->getSubSection();
+	sections.push_back(new SectionContentTableBuilder(label, &symbols));
 }
 
 std::ostream& CompositeTableBuilder::dump(std::ostream& o) const
 {
-	o << "| Label | Section | Offset | Local? |\n";
-	for (std::vector<SymbolData*>::const_iterator it = symbols.begin(); it != symbols.end(); ++it)
-		o << *(*it);
-	for (std::list<SectionContentTableBuilder*>::const_iterator it = sections.begin(); it != sections.end(); ++it)
+	for (std::vector<AsmTableBuilder*>::const_iterator it = sections.begin(); it != sections.end(); ++it)
 		o << *(*it);
 	return o;
 }
 
-std::vector<SymbolData*>& CompositeTableBuilder::getSymbols()
+int CompositeTableBuilder::getLocation() const
 {
-	return symbols;
+	return sections.back()->getLocation();
+}
+
+std::vector<Data*>& CompositeTableBuilder::getSymbols()
+{
+	return sections.front()->getSymbols();
+}
+
+std::vector<SectionInfo*> CompositeTableBuilder::getSections()
+{
+	std::vector<SectionInfo*> sections_data;
+	for (std::vector<AsmTableBuilder*>::iterator it = sections.begin(); it != sections.end(); ++it) {
+		SectionInfo* section = (*it)->getSectionInfo();
+		if (section != 0) {
+			sections_data.push_back((*it)->getSectionInfo());
+		}
+	}
+	return sections_data;
 }

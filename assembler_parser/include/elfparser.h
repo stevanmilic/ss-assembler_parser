@@ -1,21 +1,18 @@
 #ifndef _elfparser_h_
 #define _elfparser_h_
 
-#include "asmparser.h"
-#include <stdio.h>
-#include "elfminformat.h"
-#include "my_exception.h"
+#include <cstdio>
+#include "parser.h"
+#include "asmtablebuilder.h"
 
-class ElfParser : public AsmParser
+class ElfParser : public Parser
 {
 public:
-	ElfParser(char*);
+	ElfParser(std::string, TableBuilder*);
 	void parse();
-	void printTables() const;
-	~ElfParser();
+	void writeTables();
+	~ElfParser();//TO DO: delete all dynamic allocated pointers
 private:
-	FILE *elf_file;
-	char* strtab;
-
+	void getElfTokens(std::vector<Data*>&, std::vector<SectionInfo*>);
 };
 #endif //_elfparser_h_

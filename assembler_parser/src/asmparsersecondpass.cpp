@@ -1,32 +1,36 @@
 #include "asmparsersecondpass.h"
+#include "compositetablebuilder.h"
 
 /**
  * AsmParserSecondPass implementation
  */
 
-AsmParserSecondPass::AsmParserSecondPass(std::vector<Token*> tokens, std::vector<SymbolData*>& symbols) : composite_table(symbols)
+AsmParserSecondPass::AsmParserSecondPass(TableBuilder* table_builder)
 {
-	this->tokens = tokens;
+	AsmTableBuilder* asmtable_builder = static_cast<AsmTableBuilder*>(table_builder);
+	this->table_builder = new CompositeTableBuilder(asmtable_builder);
+}
+
+AsmParserSecondPass::~AsmParserSecondPass()
+{
+	for (std::vector<Token*>::iterator token = tokens.begin(); token != tokens.end(); ++token) {
+		delete *token;
+	}
+	tokens.clear();
 }
 
 void AsmParserSecondPass::parse()
 {
 	for (std::vector<Token*>::iterator token = tokens.begin(); token != tokens.end(); ++token) {
 		try {
-			if (!composite_table.resolveToken(*token))
+			if (!table_builder->resolveToken(*token))
 				break;
-		} catch (std::exception& e) {
+		} catch (MyException& e) {
 			std::cout << e.what() << std::endl;
+			error = true;
 		}
 	}
-}
-
-void AsmParserSecondPass::printTables() const
-{
-	std::cout << composite_table << endl;
-}
-
-std::vector<SymbolData*> AsmParserSecondPass::getSymbols()
-{
-	return composite_table.getSymbols();
+	if (error) {
+		throw MyException("There was an error in Parsing while passing through code Second time!", 0);
+	}
 }

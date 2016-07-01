@@ -1,26 +1,28 @@
 #ifndef _SYMBOLTABLEBUILDER_H
 #define _SYMBOLTABLEBUILDER_H
 
-#include "tablebuilder.h"
+#include "asmtablebuilder.h"
 #include "symboldata.h"
 
-class SymbolTableBuilder: public TableBuilder
+class SymbolTableBuilder: public AsmTableBuilder
 {
 public:
 	SymbolTableBuilder();
-	bool resolveToken(Token* token);
-	std::vector<SymbolData*>& getSymbols();
+	~SymbolTableBuilder();
+	bool resolveToken(Token*);
+	int getLocation() const;
+	std::vector<Data*>& getSymbols();
 	std::ostream& dump(std::ostream& o) const;
 protected:
-	void resolveSectionDirective(Token *token);
-	void resolveSkipDirective(Token *token);
-	void resolveAlignDirective(Token *token);
-	void resolveTypeDirective(Token *token);
-	void resolveInstruction(Token *token);
+	void resolveSectionDirective(Token*);
+	void resolveSkipDirective(Token*);
+	void resolveAlignDirective(Token*);
+	void resolveTypeDirective(Token*);
+	void resolveInstruction(Token*);
+	void resolveLabel(Token*);
+	std::vector<Data*> symbols;
 private:
-	bool checkIfExists(std::string label) const;
-	void resolveLabel(Token *token);
-	std::vector<SymbolData*> symbols;
+	bool checkIfExists(std::string) const;
 	std::string current_section;
 	int location_counter;
 };

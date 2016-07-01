@@ -1,11 +1,8 @@
 #ifndef _TABLEBUILDER_H
 #define _TABLEBUILDER_H
 
-#include <data.h>
-#include <vector>
-#include "labeltoken.h"
-#include "directivetoken.h"
-#include "instructiontoken.h"
+#include "token.h"
+#include <iostream>
 
 class TableBuilder
 {
@@ -16,10 +13,7 @@ public:
 	{
 		return tb.dump(o);
 	}
-	virtual ~TableBuilder()
-	{
-	}
+	virtual ~TableBuilder() {}
 };
-
 
 #endif //_TABLEBUILDER_H

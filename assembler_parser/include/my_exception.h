@@ -18,7 +18,15 @@ public:
 
 	virtual const char* what() const throw()
 	{
-		std::string msg = (std::runtime_error::what() + content) +  std::string(" at Line Number: ") + std::to_string(line_number) + std::string(" and Position: ") + std::to_string(position);
+		std::string str_line_number = "";
+		if(line_number){
+			str_line_number = " at Line Number: " + std::to_string(line_number);
+		}
+		std::string str_position = "";
+		if(position){
+			str_position = " and Position:" + std::to_string(position);
+		}
+		std::string msg = (std::runtime_error::what() + content) +  str_line_number + str_position;
 		return msg.c_str();
 	}
 

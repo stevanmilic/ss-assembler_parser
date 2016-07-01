@@ -1,26 +1,25 @@
 #ifndef _COMPOSITETABLEBUILDER_H
 #define _COMPOSITETABLEBUILDER_H
 
-#include "tablebuilder.h"
-#include "sectioncontenttablebuilder.h"
-#include "symboldata.h"
+#include "asmtablebuilder.h"
 
-class CompositeTableBuilder: public TableBuilder
+class CompositeTableBuilder: public AsmTableBuilder
 {
 public:
-	CompositeTableBuilder(std::vector<SymbolData*>& symbols);
-	bool resolveToken(Token* token);
+	CompositeTableBuilder(AsmTableBuilder*);
+	~CompositeTableBuilder();
+	bool resolveToken(Token*);
+	int getLocation() const;
+	std::vector<Data*>& getSymbols();
 	std::ostream& dump(std::ostream& o) const;
-	std::vector<SymbolData*>& getSymbols();
+	std::vector<SectionInfo*> getSections();
 protected:
-	void resolveTypeDirective(Token *token);
-	void resolveSectionDirective(Token *token);
-	void resolveIODirective(Token *token);
+	void resolveTypeDirective(Token*);
+	void resolveSectionDirective(Token*);
+	void resolveIODirective(Token*);
 private:
-	bool labelGoPublic(std::string label);
-	SectionContentTableBuilder* current_section;
-	std::list<SectionContentTableBuilder*> sections;
-	std::vector<SymbolData*> symbols;
+	bool labelGoPublic(std::string);
+	std::vector<AsmTableBuilder*> sections;//front -> symbol table, back -> other section tables
 };
 
 #endif //_COMPOSITETABLEBUILDER_H

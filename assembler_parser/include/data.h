@@ -5,8 +5,11 @@
 class Data
 {
 public:
-	Data(int offset);
 	int offset;
+	Data(int offset)
+	{
+		this->offset = offset;
+	}
 	virtual std::ostream& dump(std::ostream& o) const = 0;
 	friend std::ostream& operator<<(std::ostream& o, const Data& d)
 	{

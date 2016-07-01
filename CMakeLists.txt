@@ -5,13 +5,19 @@ project (AssemblerParser)
 
 SET(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -std=c++0x")
  
-include_directories(assembler_parser/include/ regex/include/ exprtk/ elf_format/)
+include_directories(assembler_parser/include/ assembler_linker/include assembler_emulator/include regex/include/ exprtk/ elf_format/include)
 
 link_directories(/home/stevan/etf/sistSoft/projekat/regex/lib)
 
-file(GLOB SOURCES "assembler_parser/src/*.cpp")
+file(GLOB PARSER_SOURCES "assembler_parser/src/*.cpp" "elf_format/src/elffile.cpp" "elf_format/src/objectelffile.cpp" "elf_format/src/writeobjectelffile.cpp")
+file(GLOB LINKER_SOURCES "assembler_linker/src/*.cpp" "assembler_parser/src/linemanipulation.cpp" "assembler_parser/src/parser.cpp" "assembler_parser/src/elftablebuilder.cpp")
+file(GLOB ELF_FORMAT_SOURCES "elf_format/src/*.cpp")
+# file(GLOB EMULATOR_SOURCES "assembler_emulator/src/*.cpp")
 
-# add_executable(asm_parser assembler_parser/src/main.cpp)
-add_executable(asm_parser ${SOURCES})
+add_executable(asm_parser ${PARSER_SOURCES})
+add_executable(asm_linker ${LINKER_SOURCES} ${ELF_FORMAT_SOURCES})
+# add_executable(asm_emulator ${EMULATOR_SOURCES})
 
 TARGET_LINK_LIBRARIES(asm_parser libboost_regex.so)
+
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)

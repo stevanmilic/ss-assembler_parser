@@ -9,6 +9,12 @@ SymbolTableBuilder::SymbolTableBuilder()
 	location_counter = 0;
 }
 
+SymbolTableBuilder::~SymbolTableBuilder()
+{
+	for (std::vector<Data*>::iterator it = symbols.begin(); it != symbols.end(); ++it)
+		delete *it;
+}
+
 bool SymbolTableBuilder::resolveToken(Token* token)
 {
 	switch (token->getType()) {
@@ -48,7 +54,7 @@ bool SymbolTableBuilder::resolveToken(Token* token)
 
 void SymbolTableBuilder::resolveLabel(Token *token)
 {
-	LabelToken* ltoken = dynamic_cast<LabelToken*>(token);
+	LabelAsmToken* ltoken = static_cast<LabelAsmToken*>(token);
 	if (checkIfExists(ltoken->getName())) {
 		throw MyException("Label already exists: ", ltoken->getLineNumber(), ltoken->getPosition(), ltoken->getName());
 	}
@@ -57,19 +63,19 @@ void SymbolTableBuilder::resolveLabel(Token *token)
 
 void SymbolTableBuilder::resolveSectionDirective(Token *token)
 {
-	SectionDirectiveToken* sdtoken = dynamic_cast<SectionDirectiveToken*>(token);
+	SectionDirectiveAsmToken* sdtoken = static_cast<SectionDirectiveAsmToken*>(token);
 	std::string label = sdtoken->getSubSection().empty() ? "." + sdtoken->getSection() : "." + sdtoken->getSection() + "." + sdtoken->getSubSection();
 	location_counter = 0;
 	if (checkIfExists(label)) {
 		throw MyException("Section already exists: ", sdtoken->getLineNumber(), sdtoken->getPosition(), label);
 	}
-	current_section = sdtoken->getSection();
+	current_section = label;
 	symbols.push_back(new SymbolData(location_counter, label, current_section, "local"));
 }
 
 void SymbolTableBuilder::resolveTypeDirective(Token *token)
 {
-	TypeDirectiveToken* ttoken = dynamic_cast<TypeDirectiveToken*>(token);
+	TypeDirectiveAsmToken* ttoken = static_cast<TypeDirectiveAsmToken*>(token);
 	int factor = 0;
 	std::string type = ttoken->getSection();
 	if (type == "long")
@@ -83,13 +89,13 @@ void SymbolTableBuilder::resolveTypeDirective(Token *token)
 
 void SymbolTableBuilder::resolveSkipDirective(Token *token)
 {
-	SkipDirectiveToken* stoken = dynamic_cast<SkipDirectiveToken*>(token);
+	SkipDirectiveAsmToken* stoken = static_cast<SkipDirectiveAsmToken*>(token);
 	location_counter += stoken->getSize();
 }
 
 void SymbolTableBuilder::resolveAlignDirective(Token *token)
 {
-	AlignDirectiveToken* atoken = dynamic_cast<AlignDirectiveToken*>(token);
+	AlignDirectiveAsmToken* atoken = static_cast<AlignDirectiveAsmToken*>(token);
 	int mod = location_counter % atoken->getAlignment();
 	if (mod != 0) {
 		int bytes_to_align = atoken->getAlignment() - mod;
@@ -101,17 +107,20 @@ void SymbolTableBuilder::resolveAlignDirective(Token *token)
 
 void SymbolTableBuilder::resolveInstruction(Token *token)
 {
-	if (current_section != "text") {
-		throw MyException("Instruction not allowed in current Section: ", token->getLineNumber(), token->getPosition(), current_section);
+	//TO DO: Throw error if no current_section and you are resolving other ...
+	InstructionAsmToken* itoken = static_cast<InstructionAsmToken*>(token);
+	std::string section = LineManipulation::split(current_section, '.')[0];
+	if (section != "text") {
+		throw MyException("Instruction not allowed in current Section: ", itoken->getLineNumber(), itoken->getPosition(), current_section);
 	}
-	InstructionToken* itoken = dynamic_cast<InstructionToken*>(token);
 	location_counter += itoken->getInstrSize();
 }
 
 bool SymbolTableBuilder::checkIfExists(std::string label) const
 {
-	for (std::vector<SymbolData*>::const_iterator it = symbols.begin(); it != symbols.end(); ++it) {
-		if ((*it)->label == label)
+	for (std::vector<Data*>::const_iterator it = symbols.begin(); it != symbols.end(); ++it) {
+		SymbolData* symbol = static_cast<SymbolData*>(*it);
+		if (symbol->label == label)
 			return 1;
 	}
 	return 0;
@@ -120,12 +129,17 @@ bool SymbolTableBuilder::checkIfExists(std::string label) const
 std::ostream& SymbolTableBuilder::dump(std::ostream& o) const
 {
 	o << "| Label | Section | Offset | Local? |\n";
-	for (std::vector<SymbolData*>::const_iterator it = symbols.begin(); it != symbols.end(); ++it)
+	for (std::vector<Data*>::const_iterator it = symbols.begin(); it != symbols.end(); ++it)
 		o << *(*it);
 	return o;
 }
 
-std::vector<SymbolData*>& SymbolTableBuilder::getSymbols()
+int SymbolTableBuilder::getLocation() const
+{
+	return location_counter;
+}
+
+std::vector<Data*>& SymbolTableBuilder::getSymbols()
 {
 	return symbols;
 }

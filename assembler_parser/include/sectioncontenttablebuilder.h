@@ -1,26 +1,24 @@
 #ifndef _SECTIONCONTENTTABLEBUILDER_H
 #define _SECTIONCONTENTTABLEBUILDER_H
 
-#include "tablebuilder.h"
-#include "sectiondata.h"
-#include "symboldata.h"
-#include "reloactiondata.h"
-#include <iomanip>
-#include <bitset>
-#include <boost/regex.hpp>
+#include "asmtablebuilder.h"
 #include <exprtk.hpp>
-#include <iostream>
+//boost::regex included in asmtoken.h
 
 typedef exprtk::symbol_table<double> symbol_table_t;
 typedef exprtk::expression<double>     expression_t;
 typedef exprtk::parser<double>             parser_t;
+typedef typename parser_t::
+dependent_entity_collector::symbol_t symbol_t;
 
-class SectionContentTableBuilder: public TableBuilder
+class SectionContentTableBuilder: public AsmTableBuilder
 {
 public:
-	SectionContentTableBuilder(std::string, std::vector<SymbolData*>*);
-	bool resolveToken(Token* t);
+	SectionContentTableBuilder(std::string, std::vector<Data*>*);
+	bool resolveToken(Token*);
 	int getLocation() const;
+	std::vector<Data*>& getSymbols();
+	SectionInfo* getSectionInfo();
 	std::string getName() const;
 	std::ostream& dump(std::ostream& o) const;
 protected:
@@ -39,15 +37,14 @@ private:
 	double resolveExpression(std::string, Token*);
 	template <typename T>
 	std::string valueToString(T value);
-	bool resolveExpressionError(std:: string, symbol_table_t&);
-	void addInstruction(std::string&, InstructionToken*);
+	void resolveExpressionSymbol(std:: string, Token*);
+	void addInstruction(std::string&, InstructionAsmToken*);
 	char getRegister(std::string);
 	template <typename T>
 	bool checkRange(T, unsigned);
-	boost::regex undefined_symbol;
-	std::vector<SectionData*> section_data;
-	std::list<ReloactionData*> relocations;
-	std::vector<SymbolData*>* symbols;
+	std::vector<Data*> section_data;
+	std::vector<Data*> relocations;
+	std::vector<Data*>* symbols;
 	std::string name;
 	int location_counter;
 };
