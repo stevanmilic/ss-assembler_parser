@@ -188,8 +188,12 @@ void ldrstrInstruction(Bit8u a, Bit8u r, Bit8u f, Bit8u ls, Bit32 imm)
 		cpu_regs[a].dword -= 4;
 	}
 	if (ls) {
+		Bit32u pc_rel = cpu_regs[PC].dword;
+		if(a == SP){
+			pc_rel = 0;
+		}
 		for (int i = 3; i >= 0; i--) {
-			cpu_regs[r].byte[i] = mem[curr_sh_off + cpu_regs[a].dword + imm++];
+			cpu_regs[r].byte[i] = mem[pc_rel + cpu_regs[a].dword + imm++];
 		}
 	} else {
 		for (int i = 3; i >= 0; i--) {
@@ -206,7 +210,7 @@ void ldrstrInstruction(Bit8u a, Bit8u r, Bit8u f, Bit8u ls, Bit32 imm)
 void callInstruction(Bit8u dst, Bit32 imm)
 {
 	cpu_regs[LR] = cpu_regs[PC];
-	cpu_regs[PC].dword = curr_sh_off + cpu_regs[dst].dword + imm;
+	cpu_regs[PC].dword = cpu_regs[dst].dword + imm;
 }
 
 void ioInstruction(Bit8u dst, Bit8u src, Bit8u fio)
@@ -232,6 +236,9 @@ void moveInstruction(Bit8u dst, Bit8u src, Bit8u imm, Bit8u lr)
 			lf.type = t_shl;
 		}
 		cpu_regs[dst].dword = cpu_regs[src].dword << imm;
+	}
+	if(change_flags) {
+		ldrstrInstruction(SP, PSW, 2, 1, 0);//ldria psw, sp, 0
 	}
 	lf.res = cpu_regs[dst];
 }

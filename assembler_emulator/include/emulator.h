@@ -3,7 +3,7 @@
 
 #include "instructions.h"
 
-int emulator(Elf32_Emu);
+int emulator(Bit8u*, unsigned int);
 Gen32u fetchDWORD(); 
 int decodeInstruction(Bit8);
 int executeInstruction(Instr_OC, Gen32u);

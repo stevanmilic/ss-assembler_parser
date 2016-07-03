@@ -88,7 +88,7 @@ StackInstructionAsmToken::StackInstructionAsmToken(int line_number, const boost:
 {
 	flag = "0";
 	r = content[2].str();
-	f = "000";
+	f = "001";
 	std::vector<std::string> params = LineManipulation::split(content[3].str(), ',');
 	if (params.size() == 0 || params.size() >= 3) {
 		throw MyException("Wrong number of parametars for Instruction: ", line_number, content.position(), content.str());
@@ -104,7 +104,7 @@ StackInstructionAsmToken::StackInstructionAsmToken(int line_number, const boost:
 	} else if (!name.compare(3, 5, "db")) {
 		f = "101";
 	}
-	if (a == "psw")
+	if (a == "pc")
 		f = "000";
 	imm = params.size() == 2 ? params[1] : "0";
 }

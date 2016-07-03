@@ -100,10 +100,10 @@ void SectionContentTableBuilder::resolveLoadInstruction(Token* token)
 		addInstruction(instruction, ltoken);
 	} else {
 		std::string c_string = std::bitset<32>(c).to_string();
-		std::string instruction = c_string.substr(0, 16) + "000" + "0" + std::bitset<4>(dst).to_string();
+		std::string instruction = c_string.substr(16, 16) + "000" + "0" + std::bitset<4>(dst).to_string();
 		addInstruction(instruction, ltoken);
 		location_counter -= 4;//becasue instr size for ldc returns 8 and it's divided in two halfs
-		instruction = c_string.substr(16, 16) + "000" + "1" + std::bitset<4>(dst).to_string();
+		instruction = c_string.substr(0, 16) + "000" + "1" + std::bitset<4>(dst).to_string();
 		addInstruction(instruction, ltoken);
 		location_counter -= 4;//becasue instr size for ldc returns 8 and it's divided in two halfs
 	}
@@ -139,7 +139,7 @@ void SectionContentTableBuilder::resolveIOInstruction(Token* token)
 	if (src == -1) {
 		throw MyException("Undefined source register for Instruction: ", iotoken->getLineNumber(), iotoken->getPosition(), iotoken->getName());
 	}
-	std::string instruction = iotoken->getFlag() + std::bitset<4>(src).to_string() + std::bitset<4>(dst).to_string();
+	std::string instruction = iotoken->getIO() + std::bitset<4>(src).to_string() + std::bitset<4>(dst).to_string();
 	addInstruction(instruction, iotoken);
 }
 
@@ -297,7 +297,7 @@ double SectionContentTableBuilder::resolveExpression(std::string expression_stri
 		if (symbol->label[0] != '.' && symbol->section != name) {
 			symbol_table.add_constant(symbol->label, 0);
 		} else if (symbol->label[0] != '.' && symbol->section == name) {
-			symbol_table.add_constant(symbol->label, symbol->offset);
+			symbol_table.add_constant(symbol->label, symbol->offset - (location_counter + 4));
 		}
 	}
 

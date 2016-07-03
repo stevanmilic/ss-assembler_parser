@@ -1,12 +1,18 @@
 #ifndef _emulatorheader_h_
 #define _emulatorheader_h_
 
-#include "emulatorinput.h"
+typedef unsigned char Bit8u;
+typedef unsigned short int Bit16u;
+typedef unsigned int Bit32u;
+
+typedef char Bit8;
+typedef short int Bit16;
+typedef int Bit32;
 
 #define mask(no_bits, start_bit) (((1 << no_bits) - 1) << start_bit)
 #define isolate_bits(value, no_bits, start_bit) (value & mask(no_bits,start_bit))
 #define bits_to_value(value, no_bits, start_bit) ((value & mask(no_bits,start_bit)) >> start_bit)
-
+#define sign_ext(value, start_bit) ((Bit32)value >> start_bit)
 
 typedef union {
 	Bit32 dword;
@@ -44,7 +50,6 @@ Gen32u cpu_regs[NO_REG];
 Gen32u *ivt;
 Bit16u io[IO_SIZE];
 int change_flags;
-int curr_sh_off;
 Bit8u flags;
 
 #endif
