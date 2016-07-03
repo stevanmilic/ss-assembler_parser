@@ -24,6 +24,7 @@ protected:
 private:
 	int findSymbolIndex(std::string);
 	bool checkSymbol(std::string, std::string);
+	void checkForUnresolvedSymbols();
 	int current_offset;
 	int current_size;
 	std::string curr_sh_name;

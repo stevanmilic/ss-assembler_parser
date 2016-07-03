@@ -42,10 +42,6 @@ void LinkerParser::parse()
 			break;//wrong code
 		}
 	}
-	if (error) {
-		throw MyException("There was an error in Linking", 0);
-		return;
-	}
 	getOtherElfTokens();
 	std::vector<Token*>::iterator token;
 	for (token = tokens.begin() + current_token; token != tokens.end(); ++token) {
@@ -55,6 +51,10 @@ void LinkerParser::parse()
 			std::cout << e.what() << std::endl;
 			error = true;
 		}
+	}
+	if (error) {
+		throw MyException("There was an error in Linking", 0);
+		return;
 	}
 }
 
@@ -137,4 +137,16 @@ void LinkerParser::writeTables()
 	ElfTableBuilder *elf_tb = static_cast<ElfTableBuilder*>(table_builder);
 	elf_tb->writeTable();
 	std::cout << *table_builder;
+}
+
+std::vector<char>& LinkerParser::getSegments()
+{
+	ExecElfTableBuilder *elf_tb = static_cast<ExecElfTableBuilder*>(table_builder);
+	return elf_tb->getSegments();
+}
+
+std::vector<Elf32_Phdr>& LinkerParser::getProgramHeader()
+{
+	ExecElfTableBuilder *elf_tb = static_cast<ExecElfTableBuilder*>(table_builder);
+	return elf_tb->getProgramHeader();
 }

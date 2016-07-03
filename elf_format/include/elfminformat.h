@@ -11,24 +11,6 @@ typedef struct {
 } Elf32_Ehdr;
 
 typedef enum {
-	PT_NULL,
-	PT_LOAD,
-	PT_INTERP,
-	PT_PHDR
-} segment_types;
-
-typedef struct {
-	int p_type;
-	int p_offset;
-	// int p_vaddr;
-	// int p_addr;
-	int p_filesz;
-	// int p_memsz;
-	int p_flags;
-	int p_align;
-} Elf32_Phdr;
-
-typedef enum {
 	SHT_NULL,//empty section
 	SHT_PROGBITS,//the section holds info defined by the program
 	SHT_SYMTAB,//the section holds a symbol table
@@ -74,5 +56,24 @@ typedef struct {
 	int r_info;//symbol index in symtab
 } Elf32_Rel;
 
+typedef enum {
+	PT_NULL,
+	PT_LOAD,
+	PT_INTERP,
+	PT_PHDR
+} segment_types;
+
+typedef enum {
+	PF_X = 0x1,
+	PF_W = 0x2,
+	PF_R = 0x4
+} segment_flags;
+
+typedef struct {
+	int p_offset;//offset from the begining
+	int p_memsz;//size of segment in memory
+	int p_flags;//flags for segment
+	int p_align;//alignement for offset in file
+} Elf32_Phdr;
 
 #endif //_elfminformat_h_

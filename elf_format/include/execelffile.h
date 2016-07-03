@@ -10,6 +10,8 @@ public:
 	void operation();
 	virtual std::ostream& dump(std::ostream&) const;
 	virtual ~ExecElfFile();
+	std::vector<char>& getSegments();
+	std::vector<Elf32_Phdr>& getProgramHeader();
 protected:
 	virtual void firstOperation() = 0;
 	virtual void secondOperation() = 0;

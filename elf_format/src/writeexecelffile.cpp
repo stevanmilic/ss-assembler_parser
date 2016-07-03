@@ -1,5 +1,6 @@
 #include "writeexecelffile.h"
 #include "my_exception.h"
+#include "linemanipulation.h"
 
 WriteExecElfFile::WriteExecElfFile(std::string exec_file_name)
 {
@@ -25,7 +26,22 @@ void WriteExecElfFile::newSection(std::string str_sh_name, int size, std::vector
 	} else if (curr_sh_name == "") {
 		curr_sh_name = str_sh_name;
 	}
+	Elf32_Phdr sh_phdr;
+	sh_phdr.p_offset = current_offset;
+	sh_phdr.p_memsz = size;
+	std::string sh_strtype = LineManipulation::split(str_sh_name, '.')[0];
+	if (sh_strtype == "text") {
+		sh_phdr.p_flags = PF_X | PF_R;
+	} else {
+		sh_phdr.p_flags = PF_W | PF_R;
+	}
+	sh_phdr.p_align = 0; //for now
+	phdr.push_back(sh_phdr);
 	current_size = size;
+	if (sh_strtype == "bss") {
+		sh_data.resize(size);
+		std::fill(sh_data.begin(), sh_data.end(), 0);
+	}
 	segments.insert(segments.end(), sh_data.begin(), sh_data.end());
 	symtab.push_back(new SectionSymbolData(current_offset, str_sh_name,  curr_sh_name, "local", size));
 }
@@ -74,6 +90,25 @@ int WriteExecElfFile::findSymbolIndex(std::string str_st_name)
 	return -1;//maybe it's undefined
 }
 
+void WriteExecElfFile::checkForUnresolvedSymbols()
+{
+	for (std::vector<SymbolData*>::const_iterator sym = symtab.begin(); sym != symtab.end(); ++sym) {
+		if ((*sym)->section == "UND") {
+			throw MyException("Symbol defintion not found for(symbol): ", 0, 0, (*sym)->label);
+		}
+	}
+	for (std::vector<LinkerRelocationData*>::const_iterator rel = reltab.begin(); rel != reltab.end(); ++rel) {
+
+		if ((*rel)->symbol_index == -1) {
+			//try to find symbol for relocation
+			(*rel)->symbol_index = findSymbolIndex((*rel)->symbol_name);
+			if ((*rel)->symbol_index == -1) {
+				throw MyException("Relocation not resolved for(relocation): ", 0, 0, (*rel)->symbol_name);
+			}
+		}
+	}
+}
+
 void WriteExecElfFile::applyRelocations()
 {
 	for (std::vector<LinkerRelocationData*>::const_iterator rel = reltab.begin(); rel != reltab.end(); ++rel) {
@@ -88,7 +123,7 @@ void WriteExecElfFile::applyRelocations()
 
 void WriteExecElfFile::firstOperation()
 {
-	// checkForUnresolvedSymbols();
+	checkForUnresolvedSymbols();
 	applyRelocations();
 	fwrite(&segments[0], sizeof(char), segments.size(), file);
 }

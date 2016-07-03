@@ -12,6 +12,8 @@ public:
 	LinkerParser(char**, int);
 	void parse();
 	void writeTables();
+	std::vector<char>& getSegments();
+	std::vector<Elf32_Phdr>& getProgramHeader();
 	~LinkerParser();
 protected:
 	bool parseLine(std::string&, int);

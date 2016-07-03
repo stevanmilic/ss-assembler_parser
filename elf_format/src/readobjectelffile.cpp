@@ -139,12 +139,15 @@ std::vector<std::string> ReadObjectElfFile::getOtherSectionNames(std::vector<std
 	}
 	for (std::vector<std::string>::iterator it = other_str_sh_names.begin(); it != other_str_sh_names.end();) {
 		std::string sh_strtype = *it != "" ? LineManipulation::split(*it, '.')[0] : "";
-		if (sh_strtype != "text" && sh_strtype != "data") {
+		if (sh_strtype != "text" && sh_strtype != "data" && sh_strtype != "bss") {
 			it = other_str_sh_names.erase(it);
 		}
 		else{
 			++it;
 		}
 	}
+	//TO DO : when making strtab prevent duplicates
+	sort( other_str_sh_names.begin(), other_str_sh_names.end() );
+	other_str_sh_names.erase( unique( other_str_sh_names.begin(), other_str_sh_names.end() ), other_str_sh_names.end() );
 	return other_str_sh_names;
 }

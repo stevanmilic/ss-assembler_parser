@@ -45,3 +45,15 @@ void ExecElfTableBuilder::resolveSymbolToken(Token *token)
 	LinkerSymbolElfToken *lsetoken = static_cast<LinkerSymbolElfToken*>(token);
 	exec_elf_file->newSymbol(lsetoken->getName(), lsetoken->getValue(), lsetoken->getSectionType(), lsetoken->getSection());
 }
+
+std::vector<char>& ExecElfTableBuilder::getSegments()
+{
+	ExecElfFile* exec_elf_file = static_cast<ExecElfFile*>(elf_file);
+	return exec_elf_file->getSegments();
+}
+
+std::vector<Elf32_Phdr>& ExecElfTableBuilder::getProgramHeader()
+{
+	ExecElfFile* exec_elf_file = static_cast<ExecElfFile*>(elf_file);
+	return exec_elf_file->getProgramHeader();
+}

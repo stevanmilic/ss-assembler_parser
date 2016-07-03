@@ -9,6 +9,8 @@ class ExecElfTableBuilder : public ElfTableBuilder
 public:
 	ExecElfTableBuilder(std::string);
 	bool resolveToken(Token*);
+	std::vector<char>& getSegments();
+	std::vector<Elf32_Phdr>& getProgramHeader();
 protected:
 	void resolveSectionToken(Token*);
 	void resolveSymbolToken(Token*);
