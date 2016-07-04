@@ -268,21 +268,15 @@ void SectionContentTableBuilder::resolveTypeDirective(Token* token)
 	for (std::vector<std::string>::const_iterator it = expressions.begin(); it != expressions.end(); ++it) {
 		int increment = 0;
 		std::string expression_value;
-		try {
-			//TO DO: check if value from expression is valid for 1, 2 and 4 bytes
-			//throw error btw
-			if (type == "long") {
-				increment = 4;
-				expression_value = valueToString<int>(resolveExpression(*it, token));
-			} else if (type == "word") {
-				increment = 2;
-				expression_value = valueToString<short int>(resolveExpression(*it, token));
-			} else {
-				increment = 1;
-				expression_value = valueToString<char>(resolveExpression(*it, token));
-			}
-		} catch (std::exception& e) {
-			std::cout << e.what() << std::endl;
+		if (type == "long") {
+			increment = 4;
+			expression_value = valueToString<int>(resolveExpression(*it, token));
+		} else if (type == "word") {
+			increment = 2;
+			expression_value = valueToString<short int>(resolveExpression(*it, token));
+		} else {
+			increment = 1;
+			expression_value = valueToString<char>(resolveExpression(*it, token));
 		}
 		section_data.push_back(new SectionData(location_counter, expression_value));
 		location_counter += increment;

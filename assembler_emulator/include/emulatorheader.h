@@ -31,25 +31,37 @@ typedef enum {
 	R11,R12,R13,R14,R15,PC,LR,SP,PSW
 } Reg;
 
+typedef enum{
+	cond_eq, cond_ne, cond_gt, cond_ge,
+	cond_lt, cond_le, reserved, cond_al
+} Cond;
 
-//data
+typedef enum{
+	t_int, t_add, t_sub, t_mul, t_div, t_cmp,
+	t_and, t_or, t_not, t_test, t_ldr_str, t_unknown,
+	t_call, t_in_out, t_mov_shr_shl, t_ldc, t_skip,
+	t_shr, t_shl
+} Instr_OC;
+
+struct LazyFlags{
+	Gen32u var1,var2,res;
+	Instr_OC type;
+	Bit8u oldcf;
+} lf;
+
 #define MAX_MEM_SIZE 0x10000000
 #define NO_REG 20
-#define NO_IVT_ENTRIES 16
-#define IO_SIZE 0xFFFF
 
-//flags
 #define FLAG_ZF 0x00000001
 #define FLAG_OF 0x00000002
 #define FLAG_CF 0x00000004
 #define FLAG_NF 0x00000008
 
 Bit8u *mem;
-unsigned int mem_size;
+Bit32u mem_size;
 Gen32u cpu_regs[NO_REG];
 Gen32u *ivt;
-Bit16u io[IO_SIZE];
-int change_flags;
+Bit8 change_flags;
 Bit8u flags;
 
 #endif

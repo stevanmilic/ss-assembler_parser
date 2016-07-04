@@ -1,4 +1,7 @@
 #include "emulator.h"
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int emulator(Bit8u* segments, unsigned int size)
 {
@@ -8,21 +11,26 @@ int emulator(Bit8u* segments, unsigned int size)
 	mem = segments;
 	ivt = (Gen32u*) segments;
 	mem_size = size;
-	intInstruction(0);
-	lf.type = t_unknown;
+	init();
+	create_io_threads();
 	while (1) {
+		if(!lock_int && hardware_int){
+			Gen32u instr;
+			instr.dword = 0;
+			instr.byte[1] = nextInterrupt();
+			executeInstruction(t_int, instr);
+		}
 		Gen32u instr = fetchDWORD();
 		Instr_OC instr_oc = decodeInstruction(instr.byte[0]);
-		if (instr_oc == -1) {
+		if (instr_oc == t_skip) {
+			continue;
+		} else if(instr_oc == t_unknown){
+			hardware_int |= INSTR_INT_MASK;
 			continue;
 		}
 		executeInstruction(instr_oc, instr);
-		/* if (change_flags) { */
-		/*  flags = isolate_bits(cpu_regs[PSW].byte[0], 4, 0); */
-		/*  fillFlags(); */
-		/*  cpu_regs[PSW].byte[0] |= flags; */
-		/* } */
 	}
+	pthread_exit(NULL);
 }
 
 Gen32u fetchDWORD()
@@ -37,20 +45,17 @@ Gen32u fetchDWORD()
 int decodeInstruction(Bit8 first_byte)
 {
 	if (checkCondition(isolate_bits(first_byte, 3, 0))) {
-		return -1;
+		return t_skip;//condition not met
 	}
 	change_flags = first_byte & INSTR_FLAG;
 	return bits_to_value(first_byte, 4, 4);
 }
 
-int executeInstruction(Instr_OC oc, Gen32u instr)
+void executeInstruction(Instr_OC oc, Gen32u instr)
 {
-	Bit32 imm;
-	Bit32 test;
-	Bit32 imm_t;
 	switch (oc) {
 	case t_int:
-		intInstruction(isolate_bits(instr.dword, 4, 8));
+		intInstruction(bits_to_value(instr.dword, 4, 8));
 		break;
 	case t_add:
 		if (isolate_bits(instr.dword, 1, 13)) {
@@ -114,9 +119,41 @@ int executeInstruction(Instr_OC oc, Gen32u instr)
 		moveInstruction(bits_to_value(instr.dword, 5, 8), bits_to_value(instr.dword, 5, 13), bits_to_value(instr.dword, 5, 18), bits_to_value(instr.dword, 1, 23));
 		break;
 	case t_ldc:
-		ldcInstruction(bits_to_value(instr.dword, 4, 8), bits_to_value(instr.dword, 1, 12), bits_to_value(instr.dword, 16, 20));
+		ldcInstruction(bits_to_value(instr.dword, 4, 8), bits_to_value(instr.dword, 1, 12), bits_to_value(instr.dword, 16, 16));
 		break;
 	default:
 		break;
 	}
 }
+
+void create_io_threads()
+{
+	pthread_t input_t, output_t, psw_timer_t, timer_t;
+	int rc;
+	rc = pthread_create(&input_t, NULL, input, NULL);
+	if (rc) {
+		printf("ERROR; return code from pthread_create() is %d\n", rc);
+		exit(-1);
+	}
+	rc = pthread_create(&output_t, NULL, output, NULL);
+	if (rc) {
+		printf("ERROR; return code from pthread_create() is %d\n", rc);
+		exit(-1);
+	}
+	rc = pthread_create(&psw_timer_t, NULL, psw_timer, NULL);
+	if (rc) {
+		printf("ERROR; return code from pthread_create() is %d\n", rc);
+		exit(-1);
+	}
+	rc = pthread_create(&timer_t, NULL, timer, NULL);
+	if (rc) {
+		printf("ERROR; return code from pthread_create() is %d\n", rc);
+		exit(-1);
+	}
+}
+
+/* if (change_flags) { */
+/* 	flags = isolate_bits(cpu_regs[PSW].byte[0], 4, 0); */
+/* 	fillFlags(); */
+/* 	cpu_regs[PSW].byte[0] |= flags; */
+/* } */

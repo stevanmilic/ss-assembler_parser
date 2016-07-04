@@ -39,14 +39,26 @@ int checkCondition(Cond cond)
 	return 1;//condinition is not satisfied
 }
 
+void init()
+{
+	hardware_int = 0;
+	lf.type = t_unknown;
+	for (int i = 0; i < 4; i++) {
+		cpu_regs[PC].byte[i] = ivt[0].byte[3 - i];
+	}
+}
+
 void intInstruction(Bit8u src)
 {
+	lock_int = 1;
+	ldrstrInstruction(SP, PSW, 5, 0, 0);//strdb psw, sp, 0
+	cpu_regs[LR] = cpu_regs[PC];
 	for (int i = 0; i < 4; i++) {
 		cpu_regs[PC].byte[i] = ivt[src].byte[3 - i];
 	}
 }
 
-void add_srcInstruction(Bit8u src, Bit8u dst)
+void add_srcInstruction(Bit8u dst, Bit8u src)
 {
 	if (change_flags) {
 		lf.type = t_add;
@@ -57,7 +69,7 @@ void add_srcInstruction(Bit8u src, Bit8u dst)
 	lf.res = cpu_regs[dst];
 }
 
-void sub_srcInstruction(Bit8u src, Bit8u dst)
+void sub_srcInstruction(Bit8u dst, Bit8u src)
 {
 	if (change_flags) {
 		lf.type = t_sub;
@@ -68,7 +80,7 @@ void sub_srcInstruction(Bit8u src, Bit8u dst)
 	lf.res = cpu_regs[dst];
 }
 
-void mul_srcInstruction(Bit8u src, Bit8u dst)
+void mul_srcInstruction(Bit8u dst, Bit8u src)
 {
 	if (change_flags) {
 		lf.type = t_mul;
@@ -77,7 +89,7 @@ void mul_srcInstruction(Bit8u src, Bit8u dst)
 	lf.res = cpu_regs[dst];
 }
 
-void div_srcInstruction(Bit8u src, Bit8u dst)
+void div_srcInstruction(Bit8u dst, Bit8u src)
 {
 	if (change_flags) {
 		lf.type = t_div;
@@ -86,13 +98,13 @@ void div_srcInstruction(Bit8u src, Bit8u dst)
 	lf.res = cpu_regs[dst];
 }
 
-void cmp_srcInstruction(Bit8u src, Bit8u dst)
+void cmp_srcInstruction(Bit8u dst, Bit8u src)
 {
 	lf.type = t_cmp;
 	lf.var1 = cpu_regs[dst];
 	lf.var1 = cpu_regs[src];
 	Bit32 cmp_value = cpu_regs[dst].dword - cpu_regs[src].dword;
-	lf.res = cpu_regs[dst];
+	lf.res.dword = cmp_value;
 }
 
 void add_immInstruction(Bit8u dst, Bit32 imm)
@@ -141,7 +153,7 @@ void cmp_immInstruction(Bit8u dst, Bit32 imm)
 	lf.var1 = cpu_regs[dst];
 	lf.var1.dword = imm;
 	Bit32 cmp_value = cpu_regs[dst].dword - imm;
-	lf.res = cpu_regs[dst];
+	lf.res.dword = cmp_value;
 }
 
 void andInstruction(Bit8u dst, Bit8u src)
@@ -177,7 +189,7 @@ void testInstruction(Bit8u dst, Bit8u src)
 		lf.type = t_test;
 	}
 	Bit32 test_value = cpu_regs[dst].dword & cpu_regs[src].dword;
-	lf.res = cpu_regs[dst];
+	lf.res.dword = test_value;
 }
 
 void ldrstrInstruction(Bit8u a, Bit8u r, Bit8u f, Bit8u ls, Bit32 imm)
@@ -189,7 +201,7 @@ void ldrstrInstruction(Bit8u a, Bit8u r, Bit8u f, Bit8u ls, Bit32 imm)
 	}
 	if (ls) {
 		Bit32u pc_rel = cpu_regs[PC].dword;
-		if(a == SP){
+		if (a == SP) {
 			pc_rel = 0;
 		}
 		for (int i = 3; i >= 0; i--) {
@@ -219,7 +231,7 @@ void ioInstruction(Bit8u dst, Bit8u src, Bit8u fio)
 		cpu_regs[dst].dword = io[cpu_regs[src].dword];
 		//in
 	} else {
-		io[cpu_regs[src].dword] = cpu_regs[dst].dword;
+		io[cpu_regs[src].word[0]] = cpu_regs[dst].word[0];
 		//out
 	}
 }
@@ -237,8 +249,9 @@ void moveInstruction(Bit8u dst, Bit8u src, Bit8u imm, Bit8u lr)
 		}
 		cpu_regs[dst].dword = cpu_regs[src].dword << imm;
 	}
-	if(change_flags) {
+	if (change_flags) {
 		ldrstrInstruction(SP, PSW, 2, 1, 0);//ldria psw, sp, 0
+		/* lock_int = 0; */
 	}
 	lf.res = cpu_regs[dst];
 }
@@ -308,7 +321,7 @@ int get_OF()
 			return 1;
 		}
 		break;
-defualt:
+	default:
 		return 0;
 		break;
 	}

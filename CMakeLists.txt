@@ -3,8 +3,8 @@ project (AssemblerParser)
 
 # CXX="g++-4.6" C="gcc-4.6" cmake -DCMAKE_BUILD_TYPE=Debug <path>
 
-SET(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -std=c++0x")
-SET(CMAKE_C_FLAGS "-std=c99 -pedantic -Wall -Wshadow -Wpointer-arith -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes")
+SET(CMAKE_CXX_FLAGS "-Wall -pthread -Wextra -pedantic -std=c++0x")
+SET(CMAKE_C_FLAGS "-std=c99 -pthread -pedantic -Wall -Wshadow -Wpointer-arith -Wcast-qual")
  
 include_directories(assembler_parser/include/ assembler_linker/include assembler_emulator/include regex/include/ exprtk/ elf_format/include)
 
