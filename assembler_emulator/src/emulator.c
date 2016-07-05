@@ -14,7 +14,7 @@ int emulator(Bit8u* segments, unsigned int size)
 	init();
 	create_io_threads();
 	while (1) {
-		if(!lock_int && hardware_int){
+		if(!(cpu_regs[PSW].dword & PSW_INT_FLAG) && isr_reg){
 			Gen32u instr;
 			instr.dword = 0;
 			instr.byte[1] = nextInterrupt();
@@ -25,7 +25,7 @@ int emulator(Bit8u* segments, unsigned int size)
 		if (instr_oc == t_skip) {
 			continue;
 		} else if(instr_oc == t_unknown){
-			hardware_int |= INSTR_INT_MASK;
+			isr_reg |= INSTR_INT_MASK;
 			continue;
 		}
 		executeInstruction(instr_oc, instr);
@@ -151,9 +151,3 @@ void create_io_threads()
 		exit(-1);
 	}
 }
-
-/* if (change_flags) { */
-/* 	flags = isolate_bits(cpu_regs[PSW].byte[0], 4, 0); */
-/* 	fillFlags(); */
-/* 	cpu_regs[PSW].byte[0] |= flags; */
-/* } */

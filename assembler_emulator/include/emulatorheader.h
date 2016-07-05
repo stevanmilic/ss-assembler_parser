@@ -52,16 +52,10 @@ struct LazyFlags{
 #define MAX_MEM_SIZE 0x10000000
 #define NO_REG 20
 
-#define FLAG_ZF 0x00000001
-#define FLAG_OF 0x00000002
-#define FLAG_CF 0x00000004
-#define FLAG_NF 0x00000008
-
 Bit8u *mem;
 Bit32u mem_size;
 Gen32u cpu_regs[NO_REG];
 Gen32u *ivt;
 Bit8 change_flags;
-Bit8u flags;
 
 #endif

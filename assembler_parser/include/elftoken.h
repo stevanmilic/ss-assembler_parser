@@ -1,6 +1,8 @@
 #ifndef _elftoken_h_
 #define _elftoken_h_
 
+#include "token.h"
+
 class ElfToken : public Token
 {
 public:
@@ -194,6 +196,39 @@ public:
 	}
 protected:
 	std::string data;
+};
+
+class LinkerAddressToken : public ElfToken
+{
+public:
+	LinkerAddressToken(const boost::match_results<std::string>&);
+	virtual ~LinkerAddressToken() {}
+	virtual token_type getType() = const = 0;
+	unsigned int getAddress();
+protected:
+	unsigned int address;
+	int line_number;
+};
+
+class LinkerAddAddressToken : public ElfToken
+{
+public:
+	LinkerAddAddressToken(const boost::match_results<std::string>&);
+	const static boost::regex pattern;
+};
+
+class LinkerSubAddresToken : public ElfToken
+{
+public:
+	LinkerSubAddressToken(const boost::match_results<std::string>&);
+	const static boost::regex pattern;
+};
+
+class LinkerAlignAddressToken : public ElfToken
+{
+public:
+	LinkerAlignAddressToken(const boost::match_results<std::string>&);
+	const static boost::regex pattern;
 };
 
 #endif //_elftoken_h_

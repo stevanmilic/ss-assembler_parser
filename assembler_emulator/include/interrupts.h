@@ -21,6 +21,7 @@
 #define TIMER_INT_MASK 0x8
 
 #define PSW_TIMER_FLAG 0x20000000
+#define PSW_INT_FLAG 0x80000000
 
 void* input();
 void* output();
@@ -30,7 +31,6 @@ void* timer();
 int nextInterrupt();
 
 Bit16u io[IO_SIZE];
-Bit8u hardware_int;
-Bit8u lock_int;
+Bit8u isr_reg;
 
 #endif

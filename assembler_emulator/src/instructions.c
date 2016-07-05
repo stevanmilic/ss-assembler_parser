@@ -41,7 +41,7 @@ int checkCondition(Cond cond)
 
 void init()
 {
-	hardware_int = 0;
+	cpu_regs[PSW].dword = 0;
 	lf.type = t_unknown;
 	for (int i = 0; i < 4; i++) {
 		cpu_regs[PC].byte[i] = ivt[0].byte[3 - i];
@@ -50,7 +50,8 @@ void init()
 
 void intInstruction(Bit8u src)
 {
-	lock_int = 1;
+	cpu_regs[PSW].dword |= PSW_INT_FLAG;
+	fillFlags();
 	ldrstrInstruction(SP, PSW, 5, 0, 0);//strdb psw, sp, 0
 	cpu_regs[LR] = cpu_regs[PC];
 	for (int i = 0; i < 4; i++) {
@@ -251,7 +252,7 @@ void moveInstruction(Bit8u dst, Bit8u src, Bit8u imm, Bit8u lr)
 	}
 	if (change_flags) {
 		ldrstrInstruction(SP, PSW, 2, 1, 0);//ldria psw, sp, 0
-		/* lock_int = 0; */
+		cpu_regs[PSW].dword &= ~PSW_INT_FLAG;
 	}
 	lf.res = cpu_regs[dst];
 }
@@ -267,18 +268,52 @@ void ldcInstruction(Bit8u dst, Bit8u hl, Bit16 c)
 
 int get_ZF()
 {
-	if (lf.res.dword == 0) {
-		return 1;
+	switch (lf.type) {
+	case t_add:
+	case t_sub:
+	case t_mul:
+	case t_div:
+	case t_cmp:
+	case t_and:
+	case t_or:
+	case t_not:
+	case t_test:
+	case t_mov_shr_shl:
+		if (lf.res.dword == 0) {
+			cpu_regs[PSW].dword |= FLAG_ZF;
+		} else{
+			cpu_regs[PSW].dword &= ~FLAG_ZF;
+		}
+		break;
+	default:
+		break;
 	}
-	return 0;
+	return cpu_regs[PSW].dword & FLAG_ZF;
 }
 
 int get_NF()
 {
-	if (lf.res.dword & 0x80000000) {
-		return 1;
+	switch (lf.type) {
+	case t_add:
+	case t_sub:
+	case t_mul:
+	case t_div:
+	case t_cmp:
+	case t_and:
+	case t_or:
+	case t_not:
+	case t_test:
+	case t_mov_shr_shl:
+		if (lf.res.dword & 0x80000000) {
+			cpu_regs[PSW].dword |= FLAG_NF;
+		} else{
+			cpu_regs[PSW].dword &= ~FLAG_NF;
+		}
+		break;
+	default:
+		break;
 	}
-	return 0;
+	return cpu_regs[PSW].dword & FLAG_NF;
 }
 
 int get_CF()
@@ -286,25 +321,29 @@ int get_CF()
 	switch (lf.type) {
 	case t_add:
 		if (lf.res.dword < lf.var1.dword) {
-			return 1;
+			cpu_regs[PSW].dword |= FLAG_CF;
+		} else{
+			cpu_regs[PSW].dword &= ~FLAG_CF;
 		}
 		break;
 	case t_sub:
 	case t_cmp:
 		if (lf.res.dword > lf.var1.dword) {
-			return 1;
+			cpu_regs[PSW].dword |= FLAG_CF;
+		} else{
+			cpu_regs[PSW].dword &= ~FLAG_CF;
 		}
 		break;
-	//TO DO: ....
 	case t_shr:
+		//TO DO: ....
 		break;
 	case t_shl:
+		//TO DO: ...
 		break;
 	default:
-		return 0;
 		break;
 	}
-	return 0;
+	return cpu_regs[PSW].dword & FLAG_CF;
 }
 
 int get_OF()
@@ -312,40 +351,29 @@ int get_OF()
 	switch (lf.type) {
 	case t_add:
 		if ((lf.var1.dword ^ lf.var2.dword ^ 0x80000000)) {
-			return 1;
+			cpu_regs[PSW].dword |= FLAG_OF;
+		} else {
+			cpu_regs[PSW].dword &= ~FLAG_OF;
 		}
 		break;
 	case t_sub:
 	case t_cmp:
 		if ((lf.var1.dword ^ lf.var2.dword ^ 0x80000000)) {
-			return 1;
+			cpu_regs[PSW].dword |= FLAG_OF;
+		} else {
+			cpu_regs[PSW].dword &= ~FLAG_OF;
 		}
 		break;
 	default:
-		return 0;
 		break;
 	}
-	return 0;
+	return cpu_regs[PSW].dword & FLAG_OF;
 }
 
 void fillFlags()
 {
-	switch (lf.type) {
-	case t_add:
-		if (lf.res.dword < lf.var1.dword) flags |= FLAG_CF;
-		else flags &= ~FLAG_CF;
-		if (lf.res.dword == 0) flags |= FLAG_ZF;
-		else flags &= ~FLAG_ZF;
-		if (((lf.var1.dword ^ lf.var2.dword ^ 0x80000000)))
-			flags |= FLAG_OF;
-		else flags &= ~FLAG_OF;
-		if (lf.res.dword & 0x80000000) flags |= FLAG_NF;
-		else flags &= ~FLAG_NF;
-		break;
-	case t_sub:
-	case t_cmp:
-	default:
-		break;
-	}
-	lf.type = t_unknown;
+	get_ZF();
+	get_NF();
+	get_CF();
+	get_OF();
 }

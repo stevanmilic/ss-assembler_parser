@@ -5,6 +5,11 @@
 
 #define INSTR_FLAG 0x00000008
 
+#define FLAG_ZF 0x00000001
+#define FLAG_OF 0x00000002
+#define FLAG_CF 0x00000004
+#define FLAG_NF 0x00000008
+
 void init();
 int checkCondition(Cond);
 

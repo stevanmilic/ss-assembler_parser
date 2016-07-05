@@ -12,7 +12,7 @@ void* input()
 		char c = getchar();
 		io[KEY_CHAR] = c;
 		io[KEY_STATUS] |= KEY_PRESSED;
-		hardware_int |= KEY_INT_MASK;
+		isr_reg |= KEY_INT_MASK;
 	}
 }
 
@@ -23,7 +23,8 @@ void* output()
 		while (!io[KEY_OUT]);
 		Bit16u c = io[KEY_OUT];
 		// putchar(c); platfrom independant
-		printf("%d", c);
+		printf("%hu", c);
+		fflush(stdout);
 		io[KEY_OUT] = 0;
 	}
 }
@@ -32,33 +33,33 @@ void* psw_timer()
 {
 	while (1) {
 		while (!(cpu_regs[PSW].dword & PSW_TIMER_FLAG));
-		hardware_int |= PSW_INT_MASK;
 		sleep(1);
+		isr_reg |= PSW_INT_MASK;
 	}
 }
 
 void* timer()
 {
 	while (1) {
-		hardware_int |= TIMER_INT_MASK;
 		sleep(1);
+		isr_reg |= TIMER_INT_MASK;
 	}
 }
 
 int nextInterrupt()
 {
 	//priority -> und instr interrupt
-	if (hardware_int & INSTR_INT_MASK) {
-		hardware_int &= ~INSTR_INT_MASK;
+	if (isr_reg & INSTR_INT_MASK) {
+		isr_reg &= ~INSTR_INT_MASK;
 		return INSTR_INTERRUPT;
-	} else if (hardware_int & KEY_INT_MASK) {
-		hardware_int &= ~KEY_INT_MASK;
+	} else if (isr_reg & KEY_INT_MASK) {
+		isr_reg &= ~KEY_INT_MASK;
 		return KEY_INTERRUPT;
-	} else if (hardware_int & PSW_INT_MASK) {
-		hardware_int &= ~PSW_INT_MASK;
+	} else if (isr_reg & PSW_INT_MASK) {
+		isr_reg &= ~PSW_INT_MASK;
 		return PSW_INTERRUPT;
-	} else if (hardware_int & TIMER_INT_MASK) {
-		hardware_int &= ~TIMER_INT_MASK;
+	} else if (isr_reg & TIMER_INT_MASK) {
+		isr_reg &= ~TIMER_INT_MASK;
 		return TIMER_INTERRUPT;
 	}
 }
